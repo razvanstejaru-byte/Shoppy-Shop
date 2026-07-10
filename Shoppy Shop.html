@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFNklEQVR4nO3dS5ITRxQF0GyHF8GemLBUJuyJXeAJsmWhluqT37rnTCGiU6F782WVWtUfpZRfBUL9NXoBMJICEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARFMAov09egEpfn7/uuv/f/n2o9FKuPdRPB69ur1h30op6lOASlqF/jPKUIcCnNQ7+I8U4RwFOGh08B8pwjEKsNNswX+kCPu4DbrD7OEvZY01zkQBNlopWCutdTRHoDdWD5Mj0WsK8ELt8G8N46ifm0gBPlEjhLWCN9NarkYBnjgTuNZBm3ltK1KAB0cD1jtcq6xzdgpw50ioRgdqxTXPxG3QE2YI0gxrWJkC/LbyryvvXcvqt3ZrcgQq+wIxU/CfudJr6cEE2GGFwKywxpnEFyD5OJD82m/iC7DVSjvrSmsdLboAW3fAFQM16tcuVhNdAIgtwJV3/xtT4L3YAvCflUt+ls8Byuc74FWC8ez1XeW1neXBWOXPMFz1SCD0fzIBiOYagGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiDf9CzFW/fMJ2I7+oM+wLMYLPoxFF6F4AweednkXoVgDBZ68eRehyESz8HNEjN80LIPyc0To/TQsg/NTQMkfNCiD81NQqTz4II1qTAtj9aaFFrkwAolUvgN2flmrnywQgWtUC2P3poWbOTACiKQDRFIBoCkA0BSCaAhBNAYimAERTAKINfywKa3n2Pd2VfwNAAdjk1RfUb/+2YhEcgXhr69MZVvxL9ArAS3tDvVoJFIBPrRbmIxSAp86Ef6XiuAjmf1YKbw0mAP9KC38pCsBvieEvxREoXmrwb0yAYK3Cv9IHYiZAoPRd/54JEKZ1+Ffa/UtRgCjC/ydHoACC/zkFuLiW4V85+DcKcFF2/W0U4ILs+tu5CL4Y4d/HBLgIR55jFOAC7PrHKcDC7PrnXaYAV3tawTt2/TqWL8BVn1bwivDXs/RdoCs/reCZL99+CH9lyxbg6k8reNQ6+InhL2XhAhyxYgns+m0teQ1Q44kFK7zxgt9e1AS4N/M0sOv3E1uAUtoH7Qj39vuKLsDNLCVwodvfktcALYy8NrDrj7PkBGj5hvaeBnb9sUyAJ3pMA7v+HJacAKX0eYNbhdSuP49lC1BKvxLUDKzbm3NZ/gh0e9NbHynOHosceea09AS412v0HwmyI8+8lp8Aj3pMhK3TwK4/v8tMgEejp4Fdfw2XLUApfYLy7CLZhe46LncEeubn96/dLpJbEv76IgpQSr+7RS0IfjuXPgI9s1qYVlvvamImwL0VpoHg9xE3Ae7NejdlxjVdVXQBbmYK3ExrSRB5BHpm9LFI8McwAR6MCKLwj2MCPNFrGgj+eCbACy0DKvxzUIA3WtwpEv55KMBGNUI7623XZAqww5kAC/6cFOCAvWEW/nkpwEFbQy38c3Mb9IRXt0sFfw0KUIGwr8sRiGgKQDQFIJoCEE0BiKYARFMAoikA0aoWYOanLHAdNXNmAhCtegFMAVqqnS8TgGhNCmAK0EKLXJkARGtWAFOAmlrlqekEUAJqaJmj5kcgJeCM1vnpcg2gBBzRIzcfpZRfzX/KHV8f5J2eG2b3AtwoAo9GnBSGFeBGERh5RB5eABjJB2FEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARPsH61nI0yGC24wAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFNklEQVR4nO3dS5ITRxQF0GyHF8GemLBUJuyJXeAJsmWhluqT37rnTCGiU6F782WVWtUfpZRfBUL9NXoBMJICEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARFMAov09egEpfn7/uuv/f/n2o9FKuPdRPB69ur1h30op6lOASlqF/jPKUIcCnNQ7+I8U4RwFOGh08B8pwjEKsNNswX+kCPu4DbrD7OEvZY01zkQBNlopWCutdTRHoDdWD5Mj0WsK8ELt8G8N46ifm0gBPlEjhLWCN9NarkYBnjgTuNZBm3ltK1KAB0cD1jtcq6xzdgpw50ioRgdqxTXPxG3QE2YI0gxrWJkC/LbyryvvXcvqt3ZrcgQq+wIxU/CfudJr6cEE2GGFwKywxpnEFyD5OJD82m/iC7DVSjvrSmsdLboAW3fAFQM16tcuVhNdAIgtwJV3/xtT4L3YAvCflUt+ls8Byuc74FWC8ez1XeW1neXBWOXPMFz1SCD0fzIBiOYagGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiDf9CzFW/fMJ2I7+oM+wLMYLPoxFF6F4AweednkXoVgDBZ68eRehyESz8HNEjN80LIPyc0To/TQsg/NTQMkfNCiD81NQqTz4II1qTAtj9aaFFrkwAolUvgN2flmrnywQgWtUC2P3poWbOTACiKQDRFIBoCkA0BSCaAhBNAYimAERTAKINfywKa3n2Pd2VfwNAAdjk1RfUb/+2YhEcgXhr69MZVvxL9ArAS3tDvVoJFIBPrRbmIxSAp86Ef6XiuAjmf1YKbw0mAP9KC38pCsBvieEvxREoXmrwb0yAYK3Cv9IHYiZAoPRd/54JEKZ1+Ffa/UtRgCjC/ydHoACC/zkFuLiW4V85+DcKcFF2/W0U4ILs+tu5CL4Y4d/HBLgIR55jFOAC7PrHKcDC7PrnXaYAV3tawTt2/TqWL8BVn1bwivDXs/RdoCs/reCZL99+CH9lyxbg6k8reNQ6+InhL2XhAhyxYgns+m0teQ1Q44kFK7zxgt9e1AS4N/M0sOv3E1uAUtoH7Qj39vuKLsDNLCVwodvfktcALYy8NrDrj7PkBGj5hvaeBnb9sUyAJ3pMA7v+HJacAKX0eYNbhdSuP49lC1BKvxLUDKzbm3NZ/gh0e9NbHynOHosceea09AS412v0HwmyI8+8lp8Aj3pMhK3TwK4/v8tMgEejp4Fdfw2XLUApfYLy7CLZhe46LncEeubn96/dLpJbEv76IgpQSr+7RS0IfjuXPgI9s1qYVlvvamImwL0VpoHg9xE3Ae7NejdlxjVdVXQBbmYK3ExrSRB5BHpm9LFI8McwAR6MCKLwj2MCPNFrGgj+eCbACy0DKvxzUIA3WtwpEv55KMBGNUI7623XZAqww5kAC/6cFOCAvWEW/nkpwEFbQy38c3Mb9IRXt0sFfw0KUIGwr8sRiGgKQDQFIJoCEE0BiKYARFMAoikA0aoWYOanLHAdNXNmAhCtegFMAVqqnS8TgGhNCmAK0EKLXJkARGtWAFOAmlrlqekEUAJqaJmj5kcgJeCM1vnpcg2gBBzRIzcfpZRfzX/KHV8f5J2eG2b3AtwoAo9GnBSGFeBGERh5RB5eABjJB2FEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARPsH61nI0yGC24wAAAAASUVORK5CYII=">
+<title>Cumpărături</title>
+<style>
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:#000000;
+    color:#f2f2f2;
+  }
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    padding:20px 16px 60px;
+  }
+  h1{
+    font-size:22px;
+    font-weight:700;
+    margin:0 0 4px;
+    color:#fff;
+  }
+  .who{
+    font-size:13px;
+    color:#8e8e93;
+    margin-bottom:16px;
+  }
+  .who button{
+    background:none;
+    border:none;
+    color:#e8b04b;
+    font-size:13px;
+    cursor:pointer;
+    padding:0;
+    margin-left:4px;
+  }
+  .warning{
+    background:#3a1f1f;
+    border:1px solid #7a3b3b;
+    color:#ffb0b0;
+    font-size:12.5px;
+    padding:10px 12px;
+    border-radius:10px;
+    margin-bottom:14px;
+    display:none;
+    line-height:1.5;
+  }
+  .warning.show{display:block;}
+
+  .add-row{
+    display:flex;
+    gap:8px;
+    position:relative;
+    margin-bottom:8px;
+  }
+  .add-row input{
+    flex:1;
+    padding:12px 14px;
+    border-radius:10px;
+    border:1px solid #2c2c2e;
+    background:#1c1c1e;
+    color:#f2f2f2;
+    font-size:16px;
+    outline:none;
+  }
+  .add-row input::placeholder{color:#6c6c70;}
+  .add-row input:focus{border-color:#e8b04b;}
+  .add-row button{
+    background:#e8b04b;
+    border:none;
+    color:#1a1200;
+    font-weight:800;
+    font-size:20px;
+    width:46px;
+    border-radius:10px;
+    cursor:pointer;
+  }
+  .add-row button:active{background:#d19a36;}
+  .suggestions{
+    position:absolute;
+    top:48px;
+    left:0; right:54px;
+    background:#1c1c1e;
+    border:1px solid #2c2c2e;
+    border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.5);
+    overflow:hidden;
+    z-index:10;
+    display:none;
+  }
+  .suggestions.show{display:block;}
+  .suggestion{
+    padding:10px 14px;
+    font-size:15px;
+    cursor:pointer;
+    border-bottom:1px solid #2c2c2e;
+    display:flex;
+    justify-content:space-between;
+    color:#f2f2f2;
+  }
+  .suggestion:last-child{border-bottom:none;}
+  .suggestion:hover{background:#2a2a2c;}
+  .suggestion small{color:#8e8e93;}
+
+  .list{margin-top:14px;}
+  .empty{
+    text-align:center;
+    color:#6c6c70;
+    font-size:14px;
+    padding:30px 0;
+  }
+  .cat-label{
+    font-size:11.5px;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+    color:#e8b04b;
+    margin:16px 0 4px;
+  }
+  .cat-label:first-child{margin-top:0;}
+  .item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:11px 0;
+    border-bottom:1px solid #1f1f21;
+  }
+  .check{
+    width:22px;height:22px;
+    border-radius:6px;
+    border:2px solid #4a4a4d;
+    flex:none;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .check svg{width:13px;height:13px;opacity:0;}
+  .item.done .check{background:#e8b04b;border-color:#e8b04b;}
+  .item.done .check svg{opacity:1;}
+
+  .item-main{flex:1;min-width:0;}
+  .item-name{font-size:16px;color:#f2f2f2;}
+  .item.done .item-name{color:#6c6c70;text-decoration:line-through;}
+  .meta{font-size:11.5px;color:#6c6c70;margin-top:1px;}
+
+  .remove{
+    background:none;border:none;color:#4a4a4d;font-size:16px;cursor:pointer;padding:4px;flex:none;
+  }
+  .divider{
+    display:flex;align-items:center;gap:8px;
+    margin:16px 0 4px;color:#8e8e93;font-size:12px;font-weight:600;
+  }
+  .divider::after{content:"";flex:1;height:1px;background:#2c2c2e;}
+  .divider button{background:none;border:none;color:#e8b04b;font-size:12px;font-weight:600;cursor:pointer;}
+
+  .overlay{
+    position:fixed;inset:0;background:rgba(0,0,0,0.7);
+    display:flex;align-items:center;justify-content:center;z-index:50;padding:20px;
+  }
+  .overlay.hide{display:none;}
+  .modal{background:#1c1c1e;border:1px solid #2c2c2e;border-radius:14px;padding:22px;max-width:320px;width:100%;text-align:center;}
+  .modal h2{font-size:18px;margin:0 0 6px;color:#fff;}
+  .modal p{font-size:13px;color:#8e8e93;margin:0 0 14px;}
+  .modal input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid #2c2c2e;background:#000;color:#f2f2f2;font-size:15px;outline:none;margin-bottom:12px;}
+  .modal input:focus{border-color:#e8b04b;}
+  .modal button{width:100%;padding:11px;border-radius:10px;border:none;background:#e8b04b;color:#1a1200;font-weight:800;font-size:15px;cursor:pointer;}
+  .modal .ghost-btn{background:none;border:1px solid #3a3a3d;color:#e8b04b;font-weight:600;font-size:13px;padding:8px;margin-top:-4px;margin-bottom:14px;}
+</style>
+</head>
+<body>
+
+<div class="overlay hide" id="nameOverlay">
+  <div class="modal">
+    <h2>Bine ai venit</h2>
+    <p>Fiecare familie are propria listă, separată. Cere codul de la cel care a creat familia, sau creează unul nou.</p>
+    <input id="codeInput" type="text" placeholder="Cod familie (ex: ABC123)" maxlength="12" style="text-transform:uppercase">
+    <button type="button" id="genCode" class="ghost-btn">Generează cod nou</button>
+    <input id="nameInput" type="text" placeholder="Numele tău (ex: Răzvan)" maxlength="20">
+    <button id="nameSave">Continuă</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <h1>Cumpărături</h1>
+  <div class="who">
+    <span id="whoAmI"></span><button id="changeName">schimbă</button>
+    <div id="famRow" style="margin-top:2px;"></div>
+  </div>
+  <div class="warning" id="configWarning"></div>
+
+  <div class="add-row">
+    <input id="itemInput" type="text" placeholder="Ce mai trebuie cumpărat?" autocomplete="off">
+    <button id="addBtn">＋</button>
+    <div class="suggestions" id="suggestions"></div>
+  </div>
+
+  <div class="list" id="list">
+    <div class="empty">Lista e goală.</div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+<script>
+/* =========================================================
+   0) FIREBASE — inițializare + conectare pe familie.
+   Izolat într-un try/catch: dacă lipsește ceva din configurare,
+   aplicația arată un mesaj clar în pagină, nu se blochează.
+========================================================= */
+const configWarning = document.getElementById('configWarning');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCESVpnkBqH_EgelBJLOvjbHaKNRKOl7B4",
+  authDomain: "cumparaturi-73b8a.firebaseapp.com",
+  databaseURL: "https://cumparaturi-73b8a-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cumparaturi-73b8a",
+  storageBucket: "cumparaturi-73b8a.firebasestorage.app",
+  messagingSenderId: "405298911512",
+  appId: "1:405298911512:web:5f9251318d68b4c678266d"
+};
+
+let itemsRef = null, productsRef = null, firebaseOk = false;
+let unsubItems = null, unsubProducts = null;
+let productsCache = {};
+
+try{
+  if(firebaseConfig.databaseURL.includes('PUNE_AICI')){
+    throw new Error('missing_url');
+  }
+  firebase.initializeApp(firebaseConfig);
+  firebaseOk = true;
+} catch(err){
+  configWarning.classList.add('show');
+  configWarning.textContent = err.message === 'missing_url'
+    ? '⚠️ Lipsește adresa bazei de date (databaseURL) din configurare. Lista nu se salvează încă — completeaz-o în fișier.'
+    : '⚠️ Firebase nu s-a putut inițializa. Verifică firebaseConfig din fișier.';
+}
+
+function connectToFamily(code){
+  if(!firebaseOk || !code) return;
+  const db = firebase.database();
+  if(itemsRef && unsubItems) itemsRef.off('value', unsubItems);
+  if(productsRef && unsubProducts) productsRef.off('value', unsubProducts);
+
+  itemsRef = db.ref('shoppingList/families/' + code + '/items');
+  productsRef = db.ref('shoppingList/families/' + code + '/products');
+
+  productsCache = {};
+  unsubProducts = snap => { productsCache = snap.val() || {}; };
+  productsRef.on('value', unsubProducts);
+
+  unsubItems = snap => renderList(snap.val() || {});
+  itemsRef.on('value', unsubItems);
+}
+
+/* =========================================================
+   1) IDENTITATE — nume + cod de familie
+========================================================= */
+const nameOverlay = document.getElementById('nameOverlay');
+const nameInput = document.getElementById('nameInput');
+const codeInput = document.getElementById('codeInput');
+const whoAmI = document.getElementById('whoAmI');
+const famRow = document.getElementById('famRow');
+let userName = localStorage.getItem('cumparaturi_nume');
+let famCode = localStorage.getItem('cumparaturi_cod');
+
+function sanitizeCode(v){
+  return v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10);
+}
+function randomCode(){
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; // fără caractere ce se confundă
+  let s = '';
+  for(let i=0;i<6;i++) s += chars[Math.floor(Math.random()*chars.length)];
+  return s;
+}
+
+function showNameModal(){
+  codeInput.value = famCode || '';
+  nameInput.value = userName || '';
+  nameOverlay.classList.remove('hide');
+  (famCode ? nameInput : codeInput).focus();
+}
+function hideNameModal(){ nameOverlay.classList.add('hide'); }
+
+function renderWho(){
+  whoAmI.textContent = userName ? ('Salut, ' + userName + '!') : '';
+  famRow.innerHTML = famCode
+    ? `<span style="font-size:12px;color:#6c6c70;">Familie: <b style="color:#e8b04b;">${famCode}</b></span>
+       <button id="copyCode" style="background:none;border:none;color:#e8b04b;font-size:12px;cursor:pointer;margin-left:6px;">copiază codul</button>`
+    : '';
+  const copyBtn = document.getElementById('copyCode');
+  if(copyBtn) copyBtn.addEventListener('click', () => {
+    navigator.clipboard?.writeText(famCode);
+    copyBtn.textContent = 'copiat ✓';
+    setTimeout(() => { copyBtn.textContent = 'copiază codul'; }, 1500);
+  });
+}
+
+document.getElementById('genCode').addEventListener('click', () => {
+  codeInput.value = randomCode();
+  nameInput.focus();
+});
+document.getElementById('nameSave').addEventListener('click', saveSetup);
+nameInput.addEventListener('keydown', e => { if(e.key==='Enter') saveSetup(); });
+codeInput.addEventListener('input', () => { codeInput.value = sanitizeCode(codeInput.value); });
+document.getElementById('changeName').addEventListener('click', showNameModal);
+
+function saveSetup(){
+  const n = nameInput.value.trim();
+  const c = sanitizeCode(codeInput.value);
+  if(!n || c.length < 4){
+    alert('Scrie-ți numele și un cod de familie de cel puțin 4 caractere.');
+    return;
+  }
+  userName = n;
+  famCode = c;
+  localStorage.setItem('cumparaturi_nume', n);
+  localStorage.setItem('cumparaturi_cod', c);
+  renderWho();
+  hideNameModal();
+  connectToFamily(famCode);
+}
+
+if(!userName || !famCode){ showNameModal(); } else { renderWho(); connectToFamily(famCode); }
+
+/* ---------- utilitare text ---------- */
+function normalize(str){
+  return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();
+}
+function toKey(str){
+  return normalize(str).replace(/[.#$\[\]\/\s]/g,'_');
+}
+
+/* ---------- categorii "inteligente" (locale, fără costuri, fără chei API) ---------- */
+const CATEGORII = [
+  { nume: 'Lactate & ouă', cuvinte: ['lapte','iaurt','branza','brânză','cascaval','cașcaval','unt','smantana','smântână','oua','ouă','sana','sană','telemea','urda','frisca','frișcă'] },
+  { nume: 'Carne & pește', cuvinte: ['carne','pui','porc','vita','vită','peste','pește','somon','ton','crenvursti','crenvurști','sunca','șuncă','salam','cârnați','carnati','slanina','slănină','pastrama'] },
+  { nume: 'Legume & fructe', cuvinte: ['cartofi','ceapa','ceapă','usturoi','rosii','roșii','castraveti','castraveți','ardei','morcov','mar','măr','mere','banana','banane','lamaie','lămâie','portocale','salata','salată','varza','varză'] },
+  { nume: 'Pâine & panificație', cuvinte: ['paine','pâine','cornuri','chifle','covrigi','faina','făină'] },
+  { nume: 'Băuturi', cuvinte: ['apa','apă','suc','bere','vin','cafea','ceai','cola'] },
+  { nume: 'Curățenie & igienă', cuvinte: ['detergent','sapun','săpun','sampon','șampon','hartie igienica','hârtie igienică','servetele','șervețele','burete','pasta de dinti','pastă de dinți'] },
+];
+function categorizeaza(nume){
+  const n = normalize(nume);
+  for(const cat of CATEGORII){
+    if(cat.cuvinte.some(cuv => n.includes(cuv))) return cat.nume;
+  }
+  return 'Altele';
+}
+
+/* ---------- sugestii pe măsură ce scrii ---------- */
+const itemInput = document.getElementById('itemInput');
+const suggestionsBox = document.getElementById('suggestions');
+
+itemInput.addEventListener('input', () => {
+  const q = normalize(itemInput.value);
+  if(!q){ suggestionsBox.classList.remove('show'); suggestionsBox.innerHTML=''; return; }
+  const matches = Object.values(productsCache)
+    .filter(p => normalize(p.label).includes(q))
+    .sort((a,b) => {
+      const aStarts = normalize(a.label).startsWith(q) ? 1 : 0;
+      const bStarts = normalize(b.label).startsWith(q) ? 1 : 0;
+      if(aStarts !== bStarts) return bStarts - aStarts;
+      return (b.count||0) - (a.count||0);
+    })
+    .slice(0,5);
+
+  if(matches.length===0){ suggestionsBox.classList.remove('show'); suggestionsBox.innerHTML=''; return; }
+
+  suggestionsBox.innerHTML = matches.map(p =>
+    `<div class="suggestion" data-label="${p.label.replace(/"/g,'&quot;')}">
+       <span>${p.label}</span><small>x${p.count||1}</small>
+     </div>`
+  ).join('');
+  suggestionsBox.classList.add('show');
+
+  suggestionsBox.querySelectorAll('.suggestion').forEach(el => {
+    el.addEventListener('click', () => {
+      itemInput.value = el.getAttribute('data-label');
+      suggestionsBox.classList.remove('show');
+      itemInput.focus();
+    });
+  });
+});
+
+document.addEventListener('click', e => {
+  if(!e.target.closest('.add-row')) suggestionsBox.classList.remove('show');
+});
+
+/* ---------- adăugare produs ---------- */
+document.getElementById('addBtn').addEventListener('click', addItem);
+itemInput.addEventListener('keydown', e => { if(e.key==='Enter') addItem(); });
+
+function addItem(){
+  const raw = itemInput.value.trim();
+  if(!raw) return;
+  if(!userName || !famCode){ showNameModal(); return; }
+  if(!itemsRef){ alert('Firebase nu e configurat complet încă — vezi mesajul de sus.'); return; }
+
+  const newRef = itemsRef.push();
+  newRef.set({
+    name: raw,
+    addedBy: userName,
+    checked: false,
+    checkedBy: null,
+    createdAt: Date.now()
+  });
+
+  const key = toKey(raw);
+  const existing = productsCache[key];
+  productsRef.child(key).set({
+    label: existing ? existing.label : raw,
+    count: (existing?.count || 0) + 1,
+    lastUsed: Date.now()
+  });
+
+  itemInput.value = '';
+  suggestionsBox.classList.remove('show');
+  itemInput.focus();
+}
+
+/* ---------- afișare listă în timp real, grupată pe categorii ---------- */
+const listEl = document.getElementById('list');
+
+function renderList(data){
+  const entries = Object.entries(data);
+
+  if(entries.length === 0){
+    listEl.innerHTML = '<div class="empty">Lista e goală.</div>';
+    return;
+  }
+
+  const active = entries.filter(([,v]) => !v.checked).sort((a,b)=>a[1].createdAt-b[1].createdAt);
+  const done = entries.filter(([,v]) => v.checked).sort((a,b)=>(b[1].checkedAt||0)-(a[1].checkedAt||0));
+
+  const groups = {};
+  active.forEach(([id,v]) => {
+    const cat = categorizeaza(v.name);
+    if(!groups[cat]) groups[cat] = [];
+    groups[cat].push([id,v]);
+  });
+
+  let html = '';
+  const catOrder = [...CATEGORII.map(c=>c.nume), 'Altele'];
+  catOrder.forEach(cat => {
+    if(groups[cat] && groups[cat].length){
+      html += `<div class="cat-label">${cat}</div>`;
+      groups[cat].forEach(([id,v]) => { html += renderItem(id,v,false); });
+    }
+  });
+
+  if(done.length){
+    html += `<div class="divider">Bifate <button id="clearDone">golește</button></div>`;
+    done.forEach(([id,v]) => { html += renderItem(id,v,true); });
+  }
+  listEl.innerHTML = html;
+
+  listEl.querySelectorAll('.check').forEach(el => {
+    el.addEventListener('click', () => toggleItem(el.getAttribute('data-id'), el.getAttribute('data-checked')==='true'));
+  });
+  listEl.querySelectorAll('.remove').forEach(el => {
+    el.addEventListener('click', () => itemsRef.child(el.getAttribute('data-id')).remove());
+  });
+  const clearBtn = document.getElementById('clearDone');
+  if(clearBtn){
+    clearBtn.addEventListener('click', () => { done.forEach(([id]) => itemsRef.child(id).remove()); });
+  }
+}
+
+function renderItem(id, v, isDone){
+  const metaText = isDone && v.checkedBy ? `bifat de ${v.checkedBy}` : `adăugat de ${v.addedBy || '—'}`;
+  return `
+    <div class="item ${isDone?'done':''}">
+      <div class="check" data-id="${id}" data-checked="${isDone}">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#1a1200" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="item-main">
+        <div class="item-name">${escapeHtml(v.name)}</div>
+        <div class="meta">${metaText}</div>
+      </div>
+      <button class="remove" data-id="${id}" title="Șterge">✕</button>
+    </div>`;
+}
+
+function toggleItem(id, currentlyChecked){
+  if(!userName){ showNameModal(); return; }
+  const updates = currentlyChecked
+    ? { checked:false, checkedBy:null, checkedAt:null }
+    : { checked:true, checkedBy:userName, checkedAt:Date.now() };
+  itemsRef.child(id).update(updates);
+}
+
+function escapeHtml(str){
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+
+</script>
+</body>
+</html>
