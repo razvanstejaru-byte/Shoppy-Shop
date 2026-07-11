@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFNklEQVR4nO3dS5ITRxQF0GyHF8GemLBUJuyJXeAJsmWhluqT37rnTCGiU6F782WVWtUfpZRfBUL9NXoBMJICEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARFMAov09egEpfn7/uuv/f/n2o9FKuPdRPB69ur1h30op6lOASlqF/jPKUIcCnNQ7+I8U4RwFOGh08B8pwjEKsNNswX+kCPu4DbrD7OEvZY01zkQBNlopWCutdTRHoDdWD5Mj0WsK8ELt8G8N46ifm0gBPlEjhLWCN9NarkYBnjgTuNZBm3ltK1KAB0cD1jtcq6xzdgpw50ioRgdqxTXPxG3QE2YI0gxrWJkC/LbyryvvXcvqt3ZrcgQq+wIxU/CfudJr6cEE2GGFwKywxpnEFyD5OJD82m/iC7DVSjvrSmsdLboAW3fAFQM16tcuVhNdAIgtwJV3/xtT4L3YAvCflUt+ls8Byuc74FWC8ez1XeW1neXBWOXPMFz1SCD0fzIBiOYagGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiDf9CzFW/fMJ2I7+oM+wLMYLPoxFF6F4AweednkXoVgDBZ68eRehyESz8HNEjN80LIPyc0To/TQsg/NTQMkfNCiD81NQqTz4II1qTAtj9aaFFrkwAolUvgN2flmrnywQgWtUC2P3poWbOTACiKQDRFIBoCkA0BSCaAhBNAYimAERTAKINfywKa3n2Pd2VfwNAAdjk1RfUb/+2YhEcgXhr69MZVvxL9ArAS3tDvVoJFIBPrRbmIxSAp86Ef6XiuAjmf1YKbw0mAP9KC38pCsBvieEvxREoXmrwb0yAYK3Cv9IHYiZAoPRd/54JEKZ1+Ffa/UtRgCjC/ydHoACC/zkFuLiW4V85+DcKcFF2/W0U4ILs+tu5CL4Y4d/HBLgIR55jFOAC7PrHKcDC7PrnXaYAV3tawTt2/TqWL8BVn1bwivDXs/RdoCs/reCZL99+CH9lyxbg6k8reNQ6+InhL2XhAhyxYgns+m0teQ1Q44kFK7zxgt9e1AS4N/M0sOv3E1uAUtoH7Qj39vuKLsDNLCVwodvfktcALYy8NrDrj7PkBGj5hvaeBnb9sUyAJ3pMA7v+HJacAKX0eYNbhdSuP49lC1BKvxLUDKzbm3NZ/gh0e9NbHynOHosceea09AS412v0HwmyI8+8lp8Aj3pMhK3TwK4/v8tMgEejp4Fdfw2XLUApfYLy7CLZhe46LncEeubn96/dLpJbEv76IgpQSr+7RS0IfjuXPgI9s1qYVlvvamImwL0VpoHg9xE3Ae7NejdlxjVdVXQBbmYK3ExrSRB5BHpm9LFI8McwAR6MCKLwj2MCPNFrGgj+eCbACy0DKvxzUIA3WtwpEv55KMBGNUI7623XZAqww5kAC/6cFOCAvWEW/nkpwEFbQy38c3Mb9IRXt0sFfw0KUIGwr8sRiGgKQDQFIJoCEE0BiKYARFMAoikA0aoWYOanLHAdNXNmAhCtegFMAVqqnS8TgGhNCmAK0EKLXJkARGtWAFOAmlrlqekEUAJqaJmj5kcgJeCM1vnpcg2gBBzRIzcfpZRfzX/KHV8f5J2eG2b3AtwoAo9GnBSGFeBGERh5RB5eABjJB2FEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARPsH61nI0yGC24wAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAFNklEQVR4nO3dS5ITRxQF0GyHF8GemLBUJuyJXeAJsmWhluqT37rnTCGiU6F782WVWtUfpZRfBUL9NXoBMJICEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARFMAov09egEpfn7/uuv/f/n2o9FKuPdRPB69ur1h30op6lOASlqF/jPKUIcCnNQ7+I8U4RwFOGh08B8pwjEKsNNswX+kCPu4DbrD7OEvZY01zkQBNlopWCutdTRHoDdWD5Mj0WsK8ELt8G8N46ifm0gBPlEjhLWCN9NarkYBnjgTuNZBm3ltK1KAB0cD1jtcq6xzdgpw50ioRgdqxTXPxG3QE2YI0gxrWJkC/LbyryvvXcvqt3ZrcgQq+wIxU/CfudJr6cEE2GGFwKywxpnEFyD5OJD82m/iC7DVSjvrSmsdLboAW3fAFQM16tcuVhNdAIgtwJV3/xtT4L3YAvCflUt+ls8Byuc74FWC8ez1XeW1neXBWOXPMFz1SCD0fzIBiOYagGgKQDQFIJoCEE0BiKYARFMAoikA0RSAaApANAUgmgIQTQGIpgBEUwCiDf9CzFW/fMJ2I7+oM+wLMYLPoxFF6F4AweednkXoVgDBZ68eRehyESz8HNEjN80LIPyc0To/TQsg/NTQMkfNCiD81NQqTz4II1qTAtj9aaFFrkwAolUvgN2flmrnywQgWtUC2P3poWbOTACiKQDRFIBoCkA0BSCaAhBNAYimAERTAKINfywKa3n2Pd2VfwNAAdjk1RfUb/+2YhEcgXhr69MZVvxL9ArAS3tDvVoJFIBPrRbmIxSAp86Ef6XiuAjmf1YKbw0mAP9KC38pCsBvieEvxREoXmrwb0yAYK3Cv9IHYiZAoPRd/54JEKZ1+Ffa/UtRgCjC/ydHoACC/zkFuLiW4V85+DcKcFF2/W0U4ILs+tu5CL4Y4d/HBLgIR55jFOAC7PrHKcDC7PrnXaYAV3tawTt2/TqWL8BVn1bwivDXs/RdoCs/reCZL99+CH9lyxbg6k8reNQ6+InhL2XhAhyxYgns+m0teQ1Q44kFK7zxgt9e1AS4N/M0sOv3E1uAUtoH7Qj39vuKLsDNLCVwodvfktcALYy8NrDrj7PkBGj5hvaeBnb9sUyAJ3pMA7v+HJacAKX0eYNbhdSuP49lC1BKvxLUDKzbm3NZ/gh0e9NbHynOHosceea09AS412v0HwmyI8+8lp8Aj3pMhK3TwK4/v8tMgEejp4Fdfw2XLUApfYLy7CLZhe46LncEeubn96/dLpJbEv76IgpQSr+7RS0IfjuXPgI9s1qYVlvvamImwL0VpoHg9xE3Ae7NejdlxjVdVXQBbmYK3ExrSRB5BHpm9LFI8McwAR6MCKLwj2MCPNFrGgj+eCbACy0DKvxzUIA3WtwpEv55KMBGNUI7623XZAqww5kAC/6cFOCAvWEW/nkpwEFbQy38c3Mb9IRXt0sFfw0KUIGwr8sRiGgKQDQFIJoCEE0BiKYARFMAoikA0aoWYOanLHAdNXNmAhCtegFMAVqqnS8TgGhNCmAK0EKLXJkARGtWAFOAmlrlqekEUAJqaJmj5kcgJeCM1vnpcg2gBBzRIzcfpZRfzX/KHV8f5J2eG2b3AtwoAo9GnBSGFeBGERh5RB5eABjJB2FEUwCiKQDRFIBoCkA0BSCaAhBNAYimAERTAKIpANEUgGgKQDQFIJoCEE0BiKYARPsH61nI0yGC24wAAAAASUVORK5CYII=">
+<title>Cumpărături</title>
+<style>
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:#000000;
+    color:#f2f2f2;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .wrap{
+    max-width:520px;
+    margin:0 auto;
+    padding:22px 16px 40px;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  .top-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:14px;
+  }
+  .brand{display:flex;align-items:center;gap:9px;}
+  .brand .logo{
+    width:34px;height:34px;border-radius:9px;
+    background:linear-gradient(160deg,#e8b04b,#c9922f);
+    display:flex;align-items:center;justify-content:center;
+    font-size:17px;flex:none;
+  }
+  h1{font-size:20px;font-weight:800;margin:0;color:#fff;letter-spacing:-0.2px;}
+
+  .main-tabs{
+    display:flex;
+    background:#141416;
+    border:1px solid #232326;
+    border-radius:12px;
+    padding:3px;
+    gap:3px;
+    margin-bottom:16px;
+  }
+  .main-tabs button{
+    flex:1;
+    background:none;border:none;color:#8e8e93;
+    font-size:13.5px;font-weight:700;
+    padding:9px 6px;border-radius:9px;cursor:pointer;
+  }
+  .main-tabs button.active{background:#e8b04b;color:#1a1200;}
+
+  .card{
+    background:#111113;
+    border:1px solid #202023;
+    border-radius:16px;
+    padding:16px;
+    margin-bottom:14px;
+  }
+
+  .who{
+    font-size:12.5px;
+    color:#8e8e93;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:2px;
+  }
+  .who button{
+    background:none;border:none;color:#e8b04b;font-size:12.5px;cursor:pointer;padding:0;
+  }
+  .who .sep{color:#3a3a3d;}
+
+  .total-bar{
+    font-size:13px;color:#e8b04b;font-weight:700;margin:10px 0 0;display:none;
+  }
+  .total-bar.show{display:block;}
+
+  .warning, .reminder{
+    font-size:12.5px;padding:10px 12px;border-radius:10px;margin-bottom:12px;line-height:1.5;display:none;
+  }
+  .warning{background:#3a1f1f;border:1px solid #7a3b3b;color:#ffb0b0;}
+  .reminder{background:#2c2410;border:1px solid #5c4a1a;color:#f0cf8a;}
+  .warning.show, .reminder.show{display:block;}
+
+  .list-tabs{
+    display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;margin-bottom:14px;
+    scrollbar-width:none;
+  }
+  .list-tabs::-webkit-scrollbar{display:none;}
+  .list-tab{
+    flex:none;background:#1c1c1e;border:1px solid #2c2c2e;color:#d0d0d0;
+    font-size:13px;font-weight:600;padding:8px 14px;border-radius:20px;cursor:pointer;white-space:nowrap;
+  }
+  .list-tab.active{background:#e8b04b;border-color:#e8b04b;color:#1a1200;}
+  .list-tab.add{color:#e8b04b;border-style:dashed;}
+
+  .sort-toggle-row{display:flex;justify-content:flex-end;margin-bottom:8px;}
+  .mode-btn{
+    background:#1c1c1e;border:1px solid #2c2c2e;color:#e8b04b;font-size:11.5px;font-weight:700;
+    padding:6px 10px;border-radius:20px;cursor:pointer;
+  }
+  .mode-btn.active{background:#e8b04b;color:#1a1200;border-color:#e8b04b;}
+
+  .add-row{display:flex;gap:8px;position:relative;margin-bottom:6px;}
+  .add-row input{
+    flex:1;padding:12px 14px;border-radius:10px;border:1px solid #2c2c2e;
+    background:#1c1c1e;color:#f2f2f2;font-size:16px;outline:none;min-width:0;
+  }
+  .add-row input::placeholder{color:#6c6c70;}
+  .add-row input:focus{border-color:#e8b04b;}
+  .add-row button{
+    background:#e8b04b;border:none;color:#1a1200;font-weight:800;font-size:20px;
+    width:46px;flex:none;border-radius:10px;cursor:pointer;
+  }
+  .add-row button:active{background:#d19a36;}
+
+  .expand-toggle{background:none;border:none;color:#6c6c70;font-size:12px;cursor:pointer;padding:0 0 10px;text-decoration:underline;}
+  .extra-row{display:none;gap:8px;margin-bottom:10px;}
+  .extra-row.show{display:flex;}
+  .extra-row input{flex:1;padding:10px 12px;border-radius:10px;border:1px solid #2c2c2e;background:#1c1c1e;color:#f2f2f2;font-size:14px;outline:none;min-width:0;}
+  .extra-row input:focus{border-color:#e8b04b;}
+
+  .favs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px;}
+  .fav-chip{background:#1c1c1e;border:1px solid #2c2c2e;color:#f2f2f2;font-size:12.5px;padding:6px 12px;border-radius:20px;cursor:pointer;}
+  .fav-chip:active{background:#2a2a2c;}
+
+  .suggestions{
+    position:absolute;top:48px;left:0;right:54px;background:#1c1c1e;border:1px solid #2c2c2e;
+    border-radius:10px;box-shadow:0 10px 24px rgba(0,0,0,0.5);overflow:hidden;z-index:10;display:none;
+  }
+  .suggestions.show{display:block;}
+  .suggestion{padding:10px 14px;font-size:15px;cursor:pointer;border-bottom:1px solid #2c2c2e;display:flex;justify-content:space-between;color:#f2f2f2;}
+  .suggestion:last-child{border-bottom:none;}
+  .suggestion:hover{background:#2a2a2c;}
+  .suggestion small{color:#8e8e93;}
+
+  .list{margin-top:6px;}
+  .empty{text-align:center;color:#6c6c70;font-size:14px;padding:30px 0;}
+  .cat-label{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#e8b04b;margin:16px 0 4px;}
+  .cat-label:first-child{margin-top:0;}
+  .item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #1f1f21;position:relative;}
+  .check{width:24px;height:24px;border-radius:6px;border:2px solid #4a4a4d;flex:none;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+  .check svg{width:14px;height:14px;opacity:0;}
+  .item.done .check{background:#e8b04b;border-color:#e8b04b;}
+  .item.done .check svg{opacity:1;}
+  .item-main{flex:1;min-width:0;}
+  .item-name{font-size:16px;color:#f2f2f2;}
+  .item-name .star{color:#e8b04b;font-size:12px;margin-left:4px;}
+  .item.done .item-name{color:#6c6c70;text-decoration:line-through;}
+  .meta{font-size:11.5px;color:#6c6c70;margin-top:1px;}
+  .shopping-mode .meta{display:none;}
+  .shopping-mode .favs{display:none;}
+  .shopping-mode .suggestions{display:none !important;}
+
+  .order-btns{display:flex;flex-direction:column;gap:2px;flex:none;}
+  .order-btns button{
+    background:#1c1c1e;border:1px solid #2c2c2e;color:#e8b04b;font-size:11px;
+    width:22px;height:18px;border-radius:5px;cursor:pointer;line-height:1;
+  }
+
+  .kebab{background:none;border:none;color:#4a4a4d;font-size:18px;cursor:pointer;padding:6px;flex:none;}
+  .item-menu{
+    position:absolute;background:#1c1c1e;border:1px solid #2c2c2e;border-radius:10px;
+    box-shadow:0 10px 24px rgba(0,0,0,0.5);z-index:30;overflow:hidden;min-width:170px;
+  }
+  .item-menu.hide{display:none;}
+  .item-menu button{display:block;width:100%;text-align:left;background:none;border:none;color:#f2f2f2;padding:11px 14px;font-size:14px;cursor:pointer;border-bottom:1px solid #2c2c2e;}
+  .item-menu button:last-child{border-bottom:none;color:#ff8080;}
+
+  .divider{display:flex;align-items:center;gap:8px;margin:16px 0 4px;color:#8e8e93;font-size:12px;font-weight:600;}
+  .divider::after{content:"";flex:1;height:1px;background:#2c2c2e;}
+  .divider button{background:none;border:none;color:#e8b04b;font-size:12px;font-weight:600;cursor:pointer;}
+  .done-collapsed{color:#6c6c70;font-size:13px;padding:10px 0;cursor:pointer;}
+
+  .cards-section{display:none;}
+  .cards-section.show{display:block;}
+  .loyalty-card{
+    background:#fff;border-radius:14px;padding:16px;margin-bottom:12px;color:#111;
+    text-align:center;
+  }
+  .loyalty-card .store{font-size:15px;font-weight:800;color:#1a1200;margin-bottom:8px;}
+  .loyalty-card img{max-width:100%;height:auto;background:#fff;}
+  .loyalty-card .number{font-size:13px;letter-spacing:1px;color:#444;margin-top:6px;font-family:monospace;}
+  .loyalty-card .actions{display:flex;justify-content:center;gap:14px;margin-top:10px;}
+  .loyalty-card .actions button{background:none;border:none;color:#b14d5b;font-size:12.5px;cursor:pointer;font-weight:700;}
+  .add-card-btn{
+    width:100%;background:#1c1c1e;border:1px dashed #3a3a3d;color:#e8b04b;
+    padding:14px;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;margin-bottom:12px;
+  }
+
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;z-index:50;padding:20px;}
+  .overlay.hide{display:none;}
+  .modal{background:#1c1c1e;border:1px solid #2c2c2e;border-radius:14px;padding:22px;max-width:340px;width:100%;text-align:center;max-height:80vh;overflow:auto;}
+  .modal h2{font-size:18px;margin:0 0 6px;color:#fff;}
+  .modal p{font-size:13px;color:#8e8e93;margin:0 0 14px;}
+  .modal input{width:100%;padding:11px 14px;border-radius:10px;border:1px solid #2c2c2e;background:#000;color:#f2f2f2;font-size:15px;outline:none;margin-bottom:12px;}
+  .modal input:focus{border-color:#e8b04b;}
+  .modal button{width:100%;padding:11px;border-radius:10px;border:none;background:#e8b04b;color:#1a1200;font-weight:800;font-size:15px;cursor:pointer;margin-bottom:8px;}
+  .modal .ghost-btn{background:none;border:1px solid #3a3a3d;color:#e8b04b;font-weight:600;font-size:13px;padding:8px;margin-top:-4px;margin-bottom:14px;}
+  .modal .secondary-btn{background:#2c2c2e;color:#f2f2f2;}
+  .modal img{border-radius:10px;margin-bottom:10px;}
+
+  .history-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #2c2c2e;text-align:left;font-size:14px;}
+  .history-row small{color:#6c6c70;font-size:11.5px;}
+
+  .toast{
+    position:fixed;left:16px;right:16px;bottom:20px;background:#1c1c1e;border:1px solid #2c2c2e;color:#f2f2f2;
+    padding:12px 14px;border-radius:12px;font-size:13.5px;display:flex;justify-content:space-between;align-items:center;gap:10px;
+    z-index:60;max-width:480px;margin:0 auto;box-shadow:0 10px 24px rgba(0,0,0,0.5);
+    transform:translateY(120%);transition:transform .25s ease;
+  }
+  .toast.show{transform:translateY(0);}
+  .toast button{background:none;border:none;color:#e8b04b;font-weight:700;font-size:13.5px;cursor:pointer;flex:none;}
+
+  .footer-credit{
+    text-align:center;color:#3a3a3d;font-size:11px;margin-top:auto;padding-top:26px;
+  }
+</style>
+</head>
+<body>
+
+<div class="overlay hide" id="nameOverlay">
+  <div class="modal">
+    <h2>Bine ai venit</h2>
+    <p>Fiecare familie are propria listă, separată. Cere codul de la cel care a creat familia, sau creează unul nou.</p>
+    <input id="codeInput" type="text" placeholder="Cod familie (ex: ABC123)" maxlength="12" style="text-transform:uppercase">
+    <button type="button" id="genCode" class="ghost-btn">Generează cod nou</button>
+    <input id="nameInput" type="text" placeholder="Numele tău (ex: Răzvan)" maxlength="20">
+    <button id="nameSave">Continuă</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="qrOverlay">
+  <div class="modal">
+    <h2>Cod familie</h2>
+    <p>Arată acest cod QR celuilalt telefon, sau spune-i codul direct.</p>
+    <img id="qrImg" src="" width="200" height="200" alt="cod QR">
+    <div style="font-size:20px;font-weight:800;color:#e8b04b;margin-bottom:14px;" id="qrCodeText"></div>
+    <button type="button" id="closeQr" class="secondary-btn">Închide</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="editOverlay">
+  <div class="modal">
+    <h2>Editează produsul</h2>
+    <input id="editName" type="text" placeholder="Nume produs">
+    <input id="editQty" type="text" placeholder="Cantitate (opțional, ex: 2 kg)">
+    <input id="editPrice" type="number" step="0.01" placeholder="Preț estimat / lei (opțional)">
+    <button id="editSave">Salvează</button>
+    <button type="button" id="editCancel" class="secondary-btn">Anulează</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="historyOverlay">
+  <div class="modal">
+    <h2>Istoric cumpărături</h2>
+    <p>Cele mai cumpărate produse din lista curentă.</p>
+    <div id="historyList"></div>
+    <button type="button" id="closeHistory" class="secondary-btn">Închide</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="newListOverlay">
+  <div class="modal">
+    <h2>Listă nouă</h2>
+    <p>Ex: Cumpărături, Curățenie, Farmacie.</p>
+    <input id="newListName" type="text" placeholder="Numele listei" maxlength="24">
+    <button id="newListSave">Creează</button>
+    <button type="button" id="newListCancel" class="secondary-btn">Anulează</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="cardOverlay">
+  <div class="modal">
+    <h2 id="cardModalTitle">Card nou</h2>
+    <input id="cardStore" type="text" placeholder="Magazin (ex: Lidl Plus, Cora)" maxlength="30">
+    <input id="cardNumber" type="text" placeholder="Număr card / cod bare (opțional)" maxlength="30">
+    <div style="font-size:12px;color:#6c6c70;margin:-4px 0 10px;">sau</div>
+    <label for="cardPhotoInput" class="ghost-btn" style="display:block;">📷 Fă poză cardului</label>
+    <input id="cardPhotoInput" type="file" accept="image/*" capture="environment" style="display:none;">
+    <img id="cardPhotoPreview" src="" style="display:none;max-width:100%;border-radius:10px;margin-bottom:12px;">
+    <button type="button" id="cardPhotoRemove" style="display:none;background:#2c2c2e;color:#ff8080;">Șterge poza</button>
+    <button id="cardSave">Salvează</button>
+    <button type="button" id="cardCancel" class="secondary-btn">Anulează</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="cardViewOverlay">
+  <div class="modal">
+    <div class="store" id="cardViewStore" style="font-size:16px;font-weight:800;color:#fff;margin-bottom:10px;"></div>
+    <div style="background:#fff;border-radius:12px;padding:14px;">
+      <img id="cardViewImg" src="" style="max-width:100%;">
+      <div id="cardViewNumber" style="font-family:monospace;color:#333;font-size:13px;margin-top:6px;letter-spacing:1px;"></div>
+    </div>
+    <button type="button" id="cardViewClose" class="secondary-btn" style="margin-top:14px;">Închide</button>
+  </div>
+</div>
+
+<div class="item-menu hide" id="itemMenu">
+  <button data-action="edit">✏️ Editează</button>
+  <button data-action="recurring">⭐ Comandă recurentă</button>
+  <button data-action="delete">🗑️ Șterge</button>
+</div>
+
+<div class="toast" id="toast">
+  <span id="toastMsg"></span>
+  <button id="toastUndo">Anulează</button>
+</div>
+
+<div class="wrap">
+  <div class="top-header">
+    <div class="brand">
+      <div class="logo">🛍️</div>
+      <h1>Cumpărături</h1>
+    </div>
+    <button class="mode-btn" id="historyBtn" title="Istoric">📜 Istoric</button>
+  </div>
+
+  <div class="main-tabs">
+    <button class="active" id="tabLista">🛒 Listă</button>
+    <button id="tabCarduri">💳 Carduri fidelitate</button>
+  </div>
+
+  <div class="card" id="whoCard">
+    <div class="who">
+      <span id="whoAmI"></span><button id="changeName">schimbă</button>
+      <span class="sep">·</span>
+      <span id="famRow"></span>
+    </div>
+    <div class="total-bar" id="totalBar"></div>
+  </div>
+
+  <div id="listaSection">
+    <div class="warning" id="configWarning"></div>
+    <div class="reminder" id="reminderBanner"></div>
+
+    <div class="list-tabs" id="listTabs"></div>
+
+    <div class="sort-toggle-row">
+      <button class="mode-btn" id="manualSortBtn">↕ Sortare manuală</button>
+      <span style="width:8px;"></span>
+      <button class="mode-btn" id="shoppingModeBtn">Mod cumpărături</button>
+    </div>
+
+    <div class="add-row">
+      <input id="itemInput" type="text" placeholder="Ce mai trebuie cumpărat?" autocomplete="off">
+      <button id="addBtn">＋</button>
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+    <button type="button" class="expand-toggle" id="expandToggle">+ cantitate / preț (opțional)</button>
+    <div class="extra-row" id="extraRow">
+      <input id="qtyInput" type="text" placeholder="Cantitate (ex: 2 kg)">
+      <input id="priceInput" type="number" step="0.01" placeholder="Preț estimat (lei)">
+    </div>
+
+    <div class="favs" id="favs"></div>
+
+    <div class="list" id="list">
+      <div class="empty">Lista e goală.</div>
+    </div>
+  </div>
+
+  <div id="carduriSection" class="cards-section">
+    <button class="add-card-btn" id="addCardBtn">＋ Adaugă card de fidelitate</button>
+    <div id="cardsList"></div>
+  </div>
+
+  <div class="footer-credit">made by Răzvan Popa</div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-database-compat.js"></script>
+<script>
+/* =========================================================
+   0) FIREBASE
+========================================================= */
+const configWarning = document.getElementById('configWarning');
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCESVpnkBqH_EgelBJLOvjbHaKNRKOl7B4",
+  authDomain: "cumparaturi-73b8a.firebaseapp.com",
+  databaseURL: "https://cumparaturi-73b8a-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "cumparaturi-73b8a",
+  storageBucket: "cumparaturi-73b8a.firebasestorage.app",
+  messagingSenderId: "405298911512",
+  appId: "1:405298911512:web:5f9251318d68b4c678266d"
+};
+
+let firebaseOk = false;
+let db = null;
+let itemsRef=null, productsRef=null, listsMetaRef=null, cardsRef=null;
+let unsubItems=null, unsubProducts=null, unsubLists=null, unsubCards=null;
+let productsCache = {};
+let listsMeta = {};
+let activeListId = null;
+
+try{
+  if(firebaseConfig.databaseURL.includes('PUNE_AICI')) throw new Error('missing_url');
+  firebase.initializeApp(firebaseConfig);
+  db = firebase.database();
+  firebaseOk = true;
+} catch(err){
+  configWarning.classList.add('show');
+  configWarning.textContent = err.message === 'missing_url'
+    ? '⚠️ Lipsește adresa bazei de date (databaseURL) din configurare.'
+    : '⚠️ Firebase nu s-a putut inițializat. Verifică firebaseConfig din fișier.';
+}
+
+function famPath(){ return 'shoppingList/families/' + famCode; }
+
+function connectToFamily(code){
+  if(!firebaseOk || !code) return;
+  listsMetaRef = db.ref(famPath() + '/listsMeta');
+  cardsRef = db.ref(famPath() + '/loyaltyCards');
+
+  if(unsubLists) listsMetaRef.off('value', unsubLists);
+  unsubLists = snap => {
+    listsMeta = snap.val() || {};
+    if(Object.keys(listsMeta).length === 0){
+      const newRef = listsMetaRef.push();
+      newRef.set({ name:'Cumpărături', order:0, createdAt: Date.now() });
+      return;
+    }
+    if(!activeListId || !listsMeta[activeListId]){
+      const stored = localStorage.getItem('cumparaturi_activelist_' + code);
+      activeListId = (stored && listsMeta[stored]) ? stored : Object.keys(listsMeta).sort((a,b)=>(listsMeta[a].order||0)-(listsMeta[b].order||0))[0];
+    }
+    renderListTabs();
+    connectToList(activeListId);
+  };
+  listsMetaRef.on('value', unsubLists);
+
+  if(unsubCards) cardsRef.off('value', unsubCards);
+  unsubCards = snap => renderCards(snap.val() || {});
+  cardsRef.on('value', unsubCards);
+}
+
+function connectToList(listId){
+  if(!listId) return;
+  activeListId = listId;
+  localStorage.setItem('cumparaturi_activelist_' + famCode, listId);
+
+  if(itemsRef && unsubItems) itemsRef.off('value', unsubItems);
+  if(productsRef && unsubProducts) productsRef.off('value', unsubProducts);
+
+  const base = famPath() + '/listsData/' + listId;
+  itemsRef = db.ref(base + '/items');
+  productsRef = db.ref(base + '/products');
+
+  productsCache = {};
+  unsubProducts = snap => { productsCache = snap.val() || {}; renderFavorites(); };
+  productsRef.on('value', unsubProducts);
+
+  unsubItems = snap => renderList(snap.val() || {});
+  itemsRef.on('value', unsubItems);
+}
+
+function renderListTabs(){
+  const tabs = document.getElementById('listTabs');
+  const sorted = Object.entries(listsMeta).sort((a,b)=>(a[1].order||0)-(b[1].order||0));
+  tabs.innerHTML = sorted.map(([id,meta]) =>
+    `<button class="list-tab ${id===activeListId?'active':''}" data-id="${id}">${escapeHtml(meta.name)}</button>`
+  ).join('') + '<button class="list-tab add" id="addListTab">＋ listă</button>';
+
+  tabs.querySelectorAll('.list-tab[data-id]').forEach(btn => {
+    btn.addEventListener('click', () => { connectToList(btn.getAttribute('data-id')); renderListTabs(); });
+  });
+  document.getElementById('addListTab').addEventListener('click', () => {
+    document.getElementById('newListName').value = '';
+    newListOverlay.classList.remove('hide');
+  });
+}
+
+const newListOverlay = document.getElementById('newListOverlay');
+document.getElementById('newListCancel').addEventListener('click', () => newListOverlay.classList.add('hide'));
+document.getElementById('newListSave').addEventListener('click', () => {
+  const n = document.getElementById('newListName').value.trim();
+  if(!n) return;
+  const order = Object.keys(listsMeta).length;
+  const ref = listsMetaRef.push();
+  ref.set({ name:n, order, createdAt: Date.now() }).then(() => {
+    connectToList(ref.key);
+    newListOverlay.classList.add('hide');
+  });
+});
+
+/* =========================================================
+   1) TABURI PRINCIPALE (Listă / Carduri)
+========================================================= */
+const tabLista = document.getElementById('tabLista');
+const tabCarduri = document.getElementById('tabCarduri');
+const listaSection = document.getElementById('listaSection');
+const carduriSection = document.getElementById('carduriSection');
+tabLista.addEventListener('click', () => {
+  tabLista.classList.add('active'); tabCarduri.classList.remove('active');
+  listaSection.style.display='block'; carduriSection.classList.remove('show');
+});
+tabCarduri.addEventListener('click', () => {
+  tabCarduri.classList.add('active'); tabLista.classList.remove('active');
+  listaSection.style.display='none'; carduriSection.classList.add('show');
+});
+
+/* =========================================================
+   2) IDENTITATE — nume + cod de familie
+========================================================= */
+const nameOverlay = document.getElementById('nameOverlay');
+const nameInput = document.getElementById('nameInput');
+const codeInput = document.getElementById('codeInput');
+const whoAmI = document.getElementById('whoAmI');
+const famRow = document.getElementById('famRow');
+let userName = localStorage.getItem('cumparaturi_nume');
+let famCode = localStorage.getItem('cumparaturi_cod');
+
+function sanitizeCode(v){ return v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,10); }
+function randomCode(){
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let s = '';
+  for(let i=0;i<6;i++) s += chars[Math.floor(Math.random()*chars.length)];
+  return s;
+}
+
+function showNameModal(){
+  codeInput.value = famCode || '';
+  nameInput.value = userName || '';
+  nameOverlay.classList.remove('hide');
+  (famCode ? nameInput : codeInput).focus();
+}
+function hideNameModal(){ nameOverlay.classList.add('hide'); }
+
+function renderWho(){
+  whoAmI.textContent = userName ? ('Salut, ' + userName + '!') : '';
+  famRow.innerHTML = famCode
+    ? `<span style="color:#6c6c70;">Familie: <b style="color:#e8b04b;">${famCode}</b></span>
+       <button id="copyCode" style="margin-left:6px;">copiază</button>
+       <button id="showQr" style="margin-left:6px;">cod QR</button>`
+    : '';
+  const copyBtn = document.getElementById('copyCode');
+  if(copyBtn) copyBtn.addEventListener('click', () => {
+    navigator.clipboard?.writeText(famCode);
+    copyBtn.textContent = 'copiat ✓';
+    setTimeout(() => { copyBtn.textContent = 'copiază'; }, 1500);
+  });
+  const qrBtn = document.getElementById('showQr');
+  if(qrBtn) qrBtn.addEventListener('click', showQr);
+}
+
+document.getElementById('genCode').addEventListener('click', () => {
+  codeInput.value = randomCode();
+  nameInput.focus();
+});
+document.getElementById('nameSave').addEventListener('click', saveSetup);
+nameInput.addEventListener('keydown', e => { if(e.key==='Enter') saveSetup(); });
+codeInput.addEventListener('input', () => { codeInput.value = sanitizeCode(codeInput.value); });
+document.getElementById('changeName').addEventListener('click', showNameModal);
+
+function saveSetup(){
+  const n = nameInput.value.trim();
+  const c = sanitizeCode(codeInput.value);
+  if(!n || c.length < 4){ alert('Scrie-ți numele și un cod de familie de cel puțin 4 caractere.'); return; }
+  userName = n; famCode = c;
+  localStorage.setItem('cumparaturi_nume', n);
+  localStorage.setItem('cumparaturi_cod', c);
+  activeListId = null;
+  renderWho();
+  hideNameModal();
+  connectToFamily(famCode);
+}
+
+if(!userName || !famCode){ showNameModal(); } else { renderWho(); connectToFamily(famCode); }
+
+/* ---------- cod QR ---------- */
+const qrOverlay = document.getElementById('qrOverlay');
+function showQr(){
+  document.getElementById('qrImg').src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent(famCode);
+  document.getElementById('qrCodeText').textContent = famCode;
+  qrOverlay.classList.remove('hide');
+}
+document.getElementById('closeQr').addEventListener('click', () => qrOverlay.classList.add('hide'));
+
+/* ---------- utilitare text ---------- */
+function normalize(str){ return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim(); }
+function toKey(str){ return normalize(str).replace(/[.#$\[\]\/\s]/g,'_'); }
+function formatDate(ts){
+  if(!ts) return '';
+  return new Date(ts).toLocaleDateString('ro-RO', { day:'numeric', month:'short' });
+}
+
+/* ---------- categorii "inteligente" ---------- */
+const CATEGORII = [
+  { nume: 'Lactate & ouă', cuvinte: ['lapte','iaurt','branza','brânză','cascaval','cașcaval','unt','smantana','smântână','oua','ouă','sana','sană','telemea','urda','frisca','frișcă'] },
+  { nume: 'Carne & pește', cuvinte: ['carne','pui','porc','vita','vită','peste','pește','somon','ton','crenvursti','crenvurști','sunca','șuncă','salam','cârnați','carnati','slanina','slănină','pastrama'] },
+  { nume: 'Legume & fructe', cuvinte: ['cartofi','ceapa','ceapă','usturoi','rosii','roșii','castraveti','castraveți','ardei','morcov','mar','măr','mere','banana','banane','lamaie','lămâie','portocale','salata','salată','varza','varză'] },
+  { nume: 'Pâine & panificație', cuvinte: ['paine','pâine','cornuri','chifle','covrigi','faina','făină'] },
+  { nume: 'Băuturi', cuvinte: ['apa','apă','suc','bere','vin','cafea','ceai','cola'] },
+  { nume: 'Curățenie & igienă', cuvinte: ['detergent','sapun','săpun','sampon','șampon','hartie igienica','hârtie igienică','servetele','șervețele','burete','pasta de dinti','pastă de dinți'] },
+];
+function categorizeaza(nume){
+  const n = normalize(nume);
+  for(const cat of CATEGORII){ if(cat.cuvinte.some(cuv => n.includes(cuv))) return cat.nume; }
+  return 'Altele';
+}
+
+/* ---------- mod cumpărături + sortare manuală ---------- */
+let shoppingMode = false;
+let manualSort = false;
+const shoppingModeBtn = document.getElementById('shoppingModeBtn');
+const manualSortBtn = document.getElementById('manualSortBtn');
+shoppingModeBtn.addEventListener('click', () => {
+  shoppingMode = !shoppingMode;
+  document.body.classList.toggle('shopping-mode', shoppingMode);
+  shoppingModeBtn.classList.toggle('active', shoppingMode);
+});
+manualSortBtn.addEventListener('click', () => {
+  manualSort = !manualSort;
+  manualSortBtn.classList.toggle('active', manualSort);
+  renderList(lastData);
+});
+
+/* ---------- feedback bifare ---------- */
+function feedback(){
+  if(navigator.vibrate) navigator.vibrate(35);
+  try{
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const o = ctx.createOscillator(); const g = ctx.createGain();
+    o.type='sine'; o.frequency.value=880;
+    g.gain.setValueAtTime(0.08, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+0.15);
+    o.connect(g); g.connect(ctx.destination);
+    o.start(); o.stop(ctx.currentTime+0.15);
+  }catch(e){}
+}
+
+/* ---------- toast + undo ---------- */
+const toast = document.getElementById('toast');
+const toastMsg = document.getElementById('toastMsg');
+const toastUndo = document.getElementById('toastUndo');
+let toastTimer = null;
+function showToast(msg, onUndo){
+  toastMsg.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastUndo.onclick = () => { onUndo?.(); hideToast(); };
+  toastTimer = setTimeout(hideToast, 5000);
+}
+function hideToast(){ toast.classList.remove('show'); }
+
+/* ---------- favorite ---------- */
+const favsEl = document.getElementById('favs');
+function renderFavorites(){
+  const top = Object.values(productsCache).sort((a,b)=>(b.count||0)-(a.count||0)).slice(0,8);
+  if(top.length === 0){ favsEl.innerHTML = ''; return; }
+  favsEl.innerHTML = top.map(p => `<button class="fav-chip" data-label="${p.label.replace(/"/g,'&quot;')}">${p.label}</button>`).join('');
+  favsEl.querySelectorAll('.fav-chip').forEach(el => el.addEventListener('click', () => quickAdd(el.getAttribute('data-label'))));
+}
+function quickAdd(label){
+  if(!userName || !famCode){ showNameModal(); return; }
+  if(!itemsRef) return;
+  const key = toKey(label);
+  const p = productsCache[key];
+  itemsRef.push().set({
+    name: label, qty: p?.lastQty || '', price: p?.lastPrice || 0,
+    addedBy: userName, checked:false, checkedBy:null, createdAt: Date.now(),
+    recurring:false, order: Date.now()
+  });
+  bumpProduct(label, p?.lastQty || '', p?.lastPrice || 0);
+}
+function bumpProduct(name, qty, price){
+  const key = toKey(name);
+  const existing = productsCache[key];
+  productsRef.child(key).set({
+    label: existing ? existing.label : name,
+    count: (existing?.count || 0) + 1,
+    lastUsed: Date.now(),
+    lastQty: qty || existing?.lastQty || '',
+    lastPrice: price || existing?.lastPrice || 0
+  });
+}
+
+/* ---------- extindere cantitate/preț ---------- */
+const expandToggle = document.getElementById('expandToggle');
+const extraRow = document.getElementById('extraRow');
+const qtyInput = document.getElementById('qtyInput');
+const priceInput = document.getElementById('priceInput');
+expandToggle.addEventListener('click', () => {
+  extraRow.classList.toggle('show');
+  expandToggle.style.display = extraRow.classList.contains('show') ? 'none' : 'block';
+});
+
+/* ---------- sugestii ---------- */
+const itemInput = document.getElementById('itemInput');
+const suggestionsBox = document.getElementById('suggestions');
+itemInput.addEventListener('input', () => {
+  const q = normalize(itemInput.value);
+  if(!q){ suggestionsBox.classList.remove('show'); suggestionsBox.innerHTML=''; return; }
+  const matches = Object.values(productsCache)
+    .filter(p => normalize(p.label).includes(q))
+    .sort((a,b) => {
+      const aStarts = normalize(a.label).startsWith(q) ? 1 : 0;
+      const bStarts = normalize(b.label).startsWith(q) ? 1 : 0;
+      if(aStarts !== bStarts) return bStarts - aStarts;
+      return (b.count||0) - (a.count||0);
+    }).slice(0,5);
+  if(matches.length===0){ suggestionsBox.classList.remove('show'); suggestionsBox.innerHTML=''; return; }
+  suggestionsBox.innerHTML = matches.map(p =>
+    `<div class="suggestion" data-label="${p.label.replace(/"/g,'&quot;')}" data-qty="${p.lastQty||''}" data-price="${p.lastPrice||0}">
+       <span>${p.label}</span><small>x${p.count||1}</small></div>`
+  ).join('');
+  suggestionsBox.classList.add('show');
+  suggestionsBox.querySelectorAll('.suggestion').forEach(el => {
+    el.addEventListener('click', () => {
+      itemInput.value = el.getAttribute('data-label');
+      qtyInput.value = el.getAttribute('data-qty') || '';
+      priceInput.value = el.getAttribute('data-price') && el.getAttribute('data-price') !== '0' ? el.getAttribute('data-price') : '';
+      suggestionsBox.classList.remove('show');
+      itemInput.focus();
+    });
+  });
+});
+document.addEventListener('click', e => { if(!e.target.closest('.add-row')) suggestionsBox.classList.remove('show'); });
+
+/* ---------- adăugare produs ---------- */
+document.getElementById('addBtn').addEventListener('click', addItem);
+itemInput.addEventListener('keydown', e => { if(e.key==='Enter') addItem(); });
+function addItem(){
+  const raw = itemInput.value.trim();
+  if(!raw) return;
+  if(!userName || !famCode){ showNameModal(); return; }
+  if(!itemsRef){ alert('Firebase nu e configurat complet încă.'); return; }
+  const qty = qtyInput.value.trim();
+  const price = parseFloat(priceInput.value) || 0;
+  itemsRef.push().set({
+    name: raw, qty, price, addedBy:userName, checked:false, checkedBy:null,
+    createdAt: Date.now(), recurring:false, order: Date.now()
+  });
+  bumpProduct(raw, qty, price);
+  itemInput.value=''; qtyInput.value=''; priceInput.value='';
+  suggestionsBox.classList.remove('show');
+  itemInput.focus();
+}
+
+/* ---------- listă, categorii, reminder ---------- */
+const listEl = document.getElementById('list');
+const totalBar = document.getElementById('totalBar');
+const reminderBanner = document.getElementById('reminderBanner');
+let doneCollapsed = true;
+let lastData = {};
+const TREI_ZILE = 3 * 24 * 60 * 60 * 1000;
+
+function renderList(data){
+  lastData = data;
+  const entries = Object.entries(data);
+  if(entries.length === 0){
+    listEl.innerHTML = '<div class="empty">Lista e goală.</div>';
+    totalBar.classList.remove('show');
+    reminderBanner.classList.remove('show');
+    return;
+  }
+  const active = entries.filter(([,v]) => !v.checked).sort((a,b)=>(a[1].order||a[1].createdAt)-(b[1].order||b[1].createdAt));
+  const done = entries.filter(([,v]) => v.checked).sort((a,b)=>(b[1].checkedAt||0)-(a[1].checkedAt||0));
+
+  const total = active.reduce((sum,[,v]) => sum + (parseFloat(v.price)||0), 0);
+  if(total > 0){ totalBar.textContent = 'Total estimat: ' + total.toFixed(2) + ' lei'; totalBar.classList.add('show'); }
+  else totalBar.classList.remove('show');
+
+  const oldest = active.reduce((min,[,v]) => Math.min(min, v.createdAt||Date.now()), Infinity);
+  if(active.length && (Date.now()-oldest) > TREI_ZILE){
+    reminderBanner.textContent = '⏰ Aveți ' + active.length + ' produse nebifate de mai mult de 3 zile.';
+    reminderBanner.classList.add('show');
+  } else reminderBanner.classList.remove('show');
+
+  let html = '';
+  if(manualSort){
+    active.forEach(([id,v],idx) => { html += renderItem(id,v,false,idx,active.length); });
+  } else {
+    const groups = {};
+    active.forEach(([id,v]) => { const cat = categorizeaza(v.name); (groups[cat] = groups[cat]||[]).push([id,v]); });
+    const catOrder = [...CATEGORII.map(c=>c.nume), 'Altele'];
+    catOrder.forEach(cat => {
+      if(groups[cat] && groups[cat].length){
+        html += `<div class="cat-label">${cat}</div>`;
+        groups[cat].forEach(([id,v]) => { html += renderItem(id,v,false); });
+      }
+    });
+  }
+
+  if(done.length){
+    if(doneCollapsed){
+      html += `<div class="done-collapsed" id="expandDone">${done.length} produse bifate — arată</div>`;
+    } else {
+      html += `<div class="divider">Bifate <button id="clearDone">golește</button></div>`;
+      done.forEach(([id,v]) => { html += renderItem(id,v,true); });
+    }
+  }
+  listEl.innerHTML = html;
+
+  listEl.querySelectorAll('.check').forEach(el => el.addEventListener('click', () => toggleItem(el.getAttribute('data-id'), el.getAttribute('data-checked')==='true')));
+  listEl.querySelectorAll('.kebab').forEach(el => el.addEventListener('click', (e) => openItemMenu(e, el.getAttribute('data-id'))));
+  listEl.querySelectorAll('.order-up').forEach(el => el.addEventListener('click', () => moveItem(el.getAttribute('data-id'), -1, active)));
+  listEl.querySelectorAll('.order-down').forEach(el => el.addEventListener('click', () => moveItem(el.getAttribute('data-id'), 1, active)));
+  const expandBtn = document.getElementById('expandDone');
+  if(expandBtn) expandBtn.addEventListener('click', () => { doneCollapsed = false; renderList(lastData); });
+  const clearBtn = document.getElementById('clearDone');
+  if(clearBtn){
+    clearBtn.addEventListener('click', () => {
+      done.forEach(([id,v]) => {
+        if(v.recurring) itemsRef.child(id).update({ checked:false, checkedBy:null, checkedAt:null });
+        else itemsRef.child(id).remove();
+      });
+      doneCollapsed = true;
+    });
+  }
+}
+
+function moveItem(id, dir, active){
+  const idx = active.findIndex(([aid]) => aid === id);
+  const swapIdx = idx + dir;
+  if(swapIdx < 0 || swapIdx >= active.length) return;
+  const [idA, vA] = active[idx];
+  const [idB, vB] = active[swapIdx];
+  const orderA = vA.order || vA.createdAt;
+  const orderB = vB.order || vB.createdAt;
+  itemsRef.child(idA).update({ order: orderB });
+  itemsRef.child(idB).update({ order: orderA });
+}
+
+function renderItem(id, v, isDone, idx, total){
+  const metaParts = [];
+  metaParts.push(isDone && v.checkedBy ? `bifat de ${v.checkedBy}` : `adăugat de ${v.addedBy || '—'}`);
+  if(v.price) metaParts.push(parseFloat(v.price).toFixed(2) + ' lei');
+  const qtyLabel = v.qty ? ` <span style="color:#8e8e93;">(${escapeHtml(v.qty)})</span>` : '';
+  const star = v.recurring ? '<span class="star">★</span>' : '';
+  const orderBtns = (manualSort && !isDone) ? `
+    <div class="order-btns">
+      <button class="order-up" data-id="${id}" ${idx===0?'disabled':''}>▲</button>
+      <button class="order-down" data-id="${id}" ${idx===total-1?'disabled':''}>▼</button>
+    </div>` : '';
+  return `
+    <div class="item ${isDone?'done':''}">
+      <div class="check" data-id="${id}" data-checked="${isDone}">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#1a1200" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <div class="item-main">
+        <div class="item-name">${escapeHtml(v.name)}${qtyLabel}${star}</div>
+        <div class="meta">${metaParts.join(' · ')}</div>
+      </div>
+      ${orderBtns}
+      <button class="kebab" data-id="${id}" title="Opțiuni">⋮</button>
+    </div>`;
+}
+
+function toggleItem(id, currentlyChecked){
+  if(!userName){ showNameModal(); return; }
+  if(!currentlyChecked) feedback();
+  const updates = currentlyChecked
+    ? { checked:false, checkedBy:null, checkedAt:null }
+    : { checked:true, checkedBy:userName, checkedAt:Date.now() };
+  itemsRef.child(id).update(updates);
+}
+function escapeHtml(str){
+  return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+/* ---------- meniu produs ---------- */
+const itemMenu = document.getElementById('itemMenu');
+let currentMenuId = null;
+function openItemMenu(e, id){
+  currentMenuId = id;
+  const rect = e.target.getBoundingClientRect();
+  itemMenu.style.top = (window.scrollY + rect.bottom + 4) + 'px';
+  itemMenu.style.left = Math.max(16, rect.left - 130) + 'px';
+  itemMenu.classList.remove('hide');
+  e.stopPropagation();
+}
+document.addEventListener('click', () => itemMenu.classList.add('hide'));
+itemMenu.addEventListener('click', e => e.stopPropagation());
+itemMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const action = btn.getAttribute('data-action');
+    const id = currentMenuId;
+    const v = lastData[id];
+    if(!v) return;
+    if(action === 'edit') openEditModal(id, v);
+    if(action === 'recurring') itemsRef.child(id).update({ recurring: !v.recurring });
+    if(action === 'delete'){
+      const snapshot = v;
+      itemsRef.child(id).remove();
+      showToast('Produs șters: ' + v.name, () => { itemsRef.child(id).set(snapshot); });
+    }
+    itemMenu.classList.add('hide');
+  });
+});
+
+/* ---------- editare produs ---------- */
+const editOverlay = document.getElementById('editOverlay');
+const editName = document.getElementById('editName');
+const editQty = document.getElementById('editQty');
+const editPrice = document.getElementById('editPrice');
+let editingId = null;
+function openEditModal(id, v){
+  editingId = id;
+  editName.value = v.name || ''; editQty.value = v.qty || ''; editPrice.value = v.price || '';
+  editOverlay.classList.remove('hide'); editName.focus();
+}
+document.getElementById('editCancel').addEventListener('click', () => editOverlay.classList.add('hide'));
+document.getElementById('editSave').addEventListener('click', () => {
+  const n = editName.value.trim();
+  if(!n || !editingId) return;
+  itemsRef.child(editingId).update({ name:n, qty: editQty.value.trim(), price: parseFloat(editPrice.value) || 0 });
+  editOverlay.classList.add('hide');
+});
+
+/* ---------- istoric ---------- */
+const historyOverlay = document.getElementById('historyOverlay');
+const historyList = document.getElementById('historyList');
+document.getElementById('historyBtn').addEventListener('click', () => {
+  const top = Object.values(productsCache).sort((a,b)=>(b.count||0)-(a.count||0)).slice(0,20);
+  historyList.innerHTML = top.length
+    ? top.map(p => `<div class="history-row"><span>${escapeHtml(p.label)}</span><small>x${p.count||1} · ultima dată ${formatDate(p.lastUsed)}</small></div>`).join('')
+    : '<div class="empty">Încă nu ați cumpărat nimic în lista curentă.</div>';
+  historyOverlay.classList.remove('hide');
+});
+document.getElementById('closeHistory').addEventListener('click', () => historyOverlay.classList.add('hide'));
+
+/* =========================================================
+   3) CARDURI DE FIDELITATE
+========================================================= */
+const cardOverlay = document.getElementById('cardOverlay');
+const cardViewOverlay = document.getElementById('cardViewOverlay');
+const cardPhotoInput = document.getElementById('cardPhotoInput');
+const cardPhotoPreview = document.getElementById('cardPhotoPreview');
+const cardPhotoRemove = document.getElementById('cardPhotoRemove');
+let currentCardPhoto = null;
+
+document.getElementById('addCardBtn').addEventListener('click', () => {
+  document.getElementById('cardModalTitle').textContent = 'Card nou';
+  document.getElementById('cardStore').value = '';
+  document.getElementById('cardNumber').value = '';
+  currentCardPhoto = null;
+  cardPhotoPreview.style.display = 'none';
+  cardPhotoRemove.style.display = 'none';
+  cardPhotoInput.value = '';
+  cardOverlay.classList.remove('hide');
+});
+document.getElementById('cardCancel').addEventListener('click', () => cardOverlay.classList.add('hide'));
+
+cardPhotoInput.addEventListener('change', () => {
+  const file = cardPhotoInput.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      const maxW = 900;
+      const scale = Math.min(1, maxW / img.width);
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width * scale;
+      canvas.height = img.height * scale;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      currentCardPhoto = canvas.toDataURL('image/jpeg', 0.75);
+      cardPhotoPreview.src = currentCardPhoto;
+      cardPhotoPreview.style.display = 'block';
+      cardPhotoRemove.style.display = 'block';
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+cardPhotoRemove.addEventListener('click', () => {
+  currentCardPhoto = null;
+  cardPhotoPreview.style.display = 'none';
+  cardPhotoRemove.style.display = 'none';
+  cardPhotoInput.value = '';
+});
+
+document.getElementById('cardSave').addEventListener('click', () => {
+  const store = document.getElementById('cardStore').value.trim();
+  const number = document.getElementById('cardNumber').value.trim();
+  if(!store || (!number && !currentCardPhoto) || !cardsRef){
+    alert('Scrie un magazin și fie un număr, fie o poză a cardului.');
+    return;
+  }
+  cardsRef.push().set({
+    store, number: number || '', photo: currentCardPhoto || '',
+    addedBy:userName||'', createdAt: Date.now()
+  });
+  cardOverlay.classList.add('hide');
+});
+document.getElementById('cardViewClose').addEventListener('click', () => cardViewOverlay.classList.add('hide'));
+
+function renderCards(data){
+  const cardsList = document.getElementById('cardsList');
+  const entries = Object.entries(data).sort((a,b)=>(a[1].createdAt||0)-(b[1].createdAt||0));
+  if(entries.length === 0){
+    cardsList.innerHTML = '<div class="empty">Niciun card salvat încă.</div>';
+    return;
+  }
+  cardsList.innerHTML = entries.map(([id,c]) => `
+    <div class="loyalty-card" data-id="${id}">
+      <div class="store">${escapeHtml(c.store)}</div>
+      ${c.photo
+        ? `<img src="${c.photo}" alt="poza card">`
+        : (c.number ? `<img src="https://barcodeapi.org/api/128/${encodeURIComponent(c.number)}" alt="cod bare" loading="lazy">` : '')
+      }
+      ${c.number ? `<div class="number">${escapeHtml(c.number)}</div>` : ''}
+      <div class="actions">
+        <button class="view-card" data-id="${id}">Vezi mare</button>
+        <button class="delete-card" data-id="${id}">Șterge</button>
+      </div>
+    </div>`).join('');
+
+  cardsList.querySelectorAll('.view-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const c = data[btn.getAttribute('data-id')];
+      document.getElementById('cardViewStore').textContent = c.store;
+      document.getElementById('cardViewImg').src = c.photo || ('https://barcodeapi.org/api/128/' + encodeURIComponent(c.number));
+      document.getElementById('cardViewNumber').textContent = c.number || '';
+      cardViewOverlay.classList.remove('hide');
+    });
+  });
+  cardsList.querySelectorAll('.delete-card').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.getAttribute('data-id');
+      const c = data[id];
+      cardsRef.child(id).remove();
+      showToast('Card șters: ' + c.store, () => { cardsRef.child(id).set(c); });
+    });
+  });
+}
+</script>
+</body>
+</html>
