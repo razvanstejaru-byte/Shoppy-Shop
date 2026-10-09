@@ -324,7 +324,7 @@
 
     <!-- Search Dish Box -->
     <div class="search-dish-box">
-        <h3>Ce mâncare vrei s faci?</h3>
+        <h3>Ce mÃ¢ncare vrei s faci?</h3>
         <div class="input-row" style="margin-bottom: 0;">
             <input type="text" id="desiredDishInput" class="main-input" placeholder="ex: Sup de pui, Omlet...">
             <button class="btn-add" onclick="askGeminiForRecipe(true)" style="background-color: var(--accent-color);"></button>
@@ -332,7 +332,7 @@
     </div>
 
     <!-- AI Assistant Feature Button -->
-    <button class="btn-recipe" onclick="askGeminiForRecipe(false)"> Sugereaz reet din ce am în co</button>
+    <button class="btn-recipe" onclick="askGeminiForRecipe(false)"> Sugereaz reet din ce am Ã®n co</button>
 
     <!-- Recipe Result Box -->
     <div id="recipeBox" class="recipe-box">
@@ -340,7 +340,7 @@
         <p id="recipeText">Se genereaz reeta...</p>
         <h4 style="font-size:0.9rem; color:var(--accent-color); margin: 10px 0 6px 0;">Ingrediente lips (strict necesare):</h4>
         <ul id="missingList" style="list-style:none; padding:0; margin:0 0 10px 0;"></ul>
-        <button class="btn-add-missing" onclick="addMissingToCart()">Pune produsele lips în co</button>
+        <button class="btn-add-missing" onclick="addMissingToCart()">Pune produsele lips Ã®n co</button>
     </div>
 </div>
 
@@ -348,7 +348,7 @@
     let products = JSON.parse(localStorage.getItem('shoppy_products')) || [];
     let currentMissing = [];
 
-    // La încrcare afim produsele salvate
+    // La Ã®ncrcare afim produsele salvate
     renderList();
 
     function saveProducts() {
@@ -415,7 +415,7 @@
         const desiredDish = document.getElementById('desiredDishInput').value.trim();
 
         if (isSpecificSearch && !desiredDish) {
-            alert("Te rugm s scrii ce mâncare vrei s faci în bara de cutare!");
+            alert("Te rugm s scrii ce mÃ¢ncare vrei s faci Ã®n bara de cutare!");
             return;
         }
 
@@ -429,22 +429,22 @@
         let prompt = "";
         if (isSpecificSearch) {
             prompt = `Utilizatorul vrea s gteasc exact acest preparat: "${desiredDish}". 
-            Ingredientele pe care le are deja în co sunt: ${productNames.length > 0 ? productNames.join(', ') : 'niciunul'}. 
-            Regul strict: Folosete cu precdere ingredientele din co. Adaug alte ingrediente în lista de "missing" DOAR DAC ESTE STRICT NECESAR pentru realizarea reetei, fr elemente opionale sau excese. 
-            Rspunde obligatoriu în limba român în format JSON strict:
+            Ingredientele pe care le are deja Ã®n co sunt: ${productNames.length > 0 ? productNames.join(', ') : 'niciunul'}. 
+            Regul strict: Folosete cu precdere ingredientele din co. Adaug alte ingrediente Ã®n lista de "missing" DOAR DAC ESTE STRICT NECESAR pentru realizarea reetei, fr elemente opionale sau excese. 
+            Rspunde obligatoriu Ã®n limba romÃ¢n Ã®n format JSON strict:
             {
               "recipe": "Modul de preparare...",
               "missing": ["ingredient1", "ingredient2"]
             }`;
         } else {
             if (productNames.length === 0) {
-                alert("Te rugm s adaugi ingrediente în co sau s foloseti bara de cutare a preparatului dorit!");
+                alert("Te rugm s adaugi ingrediente Ã®n co sau s foloseti bara de cutare a preparatului dorit!");
                 box.style.display = 'none';
                 return;
             }
-            prompt = `Am urmtoarele ingrediente în co: ${productNames.join(', ')}. 
-            Propune o reet simpl bazat EXCLUSIV pe aceste ingrediente. Adaug alte produse în lista "missing" DOAR DAC ESTE STRICT NECESAR pentru ca reeta s poat fi gtit. 
-            Rspunde obligatoriu în limba român în format JSON strict:
+            prompt = `Am urmtoarele ingrediente Ã®n co: ${productNames.join(', ')}. 
+            Propune o reet simpl bazat EXCLUSIV pe aceste ingrediente. Adaug alte produse Ã®n lista "missing" DOAR DAC ESTE STRICT NECESAR pentru ca reeta s poat fi gtit. 
+            Rspunde obligatoriu Ã®n limba romÃ¢n Ã®n format JSON strict:
             {
               "recipe": "Modul de preparare...",
               "missing": ["ingredient1", "ingredient2"]
@@ -470,7 +470,7 @@
             const mList = document.getElementById('missingList');
             if (currentMissing.length === 0) {
                 const li = document.createElement('li');
-                li.innerText = "Ai tot ce îi trebuie în co! Nu lipsete nimic.";
+                li.innerText = "Ai tot ce Ã®i trebuie Ã®n co! Nu lipsete nimic.";
                 mList.appendChild(li);
             } else {
                 currentMissing.forEach(ing => {
@@ -479,7 +479,7 @@
                     li.style.padding = '6px 10px';
                     li.style.borderRadius = '6px';
                     li.style.marginBottom = '4px';
-                    li.innerText = `• ${ing}`;
+                    li.innerText = `Â• ${ing}`;
                     mList.appendChild(li);
                 });
             }
@@ -500,7 +500,7 @@
         saveProducts();
         renderList();
         document.getElementById('recipeBox').style.display = 'none';
-        alert("Ingredientele lips au fost adugate în lista de cumprturi!");
+        alert("Ingredientele lips au fost adugate Ã®n lista de cumprturi!");
     }
 </script>
 
