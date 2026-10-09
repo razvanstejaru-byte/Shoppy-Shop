@@ -1,13 +1,20 @@
+// api/recipe.js
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Metodă nepermisă' });
   }
 
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey =
+    process.env.GEMINI_API_KEY ||
+    process.env.GOOGLE_API_KEY ||
+    process.env.GEMINI_KEY;
+
   if (!apiKey) {
-    console.error("Eroare: GEMINI_API_KEY nu este setată în environment variables pe Vercel.");
-    return res.status(500).json({ error: 'GEMINI_API_KEY lipsește din setările Vercel' });
+    const nume = Object.keys(process.env).filter(k => /GEM|API|KEY/i.test(k));
+    return res.status(500).json({
+      error: 'Lipsește GEMINI_API_KEY. Variabile găsite: ' + (nume.join(', ') || 'niciuna'),
+    });
   }
 
   const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
@@ -23,12 +30,15 @@ export default async function handler(req, res) {
 
   const have = products.length ? products.join(', ') : 'niciunul';
   const prompt = dish
-    ? `Utilizatorul vrea să gătească: "${dish}".\nIngredientele din coș: ${have}.\nFolosește cu precădere ingredientele din coș. Pune în "missing" DOAR ingredientele strict necesare care nu sunt în coș, fără opționale.`
-    : `Ingredientele din coș: ${have}.\nPropune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOAR ce este strict necesar ca rețeta să poată fi gătită.`;
+    ? `Utilizatorul vrea să gătească: "${dish}".
+Ingredientele din coș: ${have}.
+Folosește cu precădere ingredientele din coș. Pune în "missing" DOAR ingredientele strict necesare care nu sunt în coș, fără opționale.`
+    : `Ingredientele din coș: ${have}.
+Propune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOAR ce este strict necesar ca rețeta să poată fi gătită.`;
 
   try {
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
       {
         method: 'POST',
         headers: {
@@ -54,19 +64,11 @@ export default async function handler(req, res) {
 
     const data = await r.json();
     if (!r.ok || data.error) {
-      console.error("Răspuns eroare Google API:", data);
       return res.status(502).json({ error: data.error?.message || 'Eroare Gemini' });
     }
 
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     const parsed = JSON.parse(text.replace(/```json|```/g, '').trim());
-    
+
     return res.status(200).json({
-      recipe: String(parsed.recipe || ''),
-      missing: Array.isArray(parsed.missing) ? parsed.missing.map(String) : [],
-    });
-  } catch (e) {
-    console.error("Excepție serverless:", e);
-    return res.status(500).json({ error: 'Nu am putut genera rețeta. Încearcă din nou.' });
-  }
-}
+      recipe: String
