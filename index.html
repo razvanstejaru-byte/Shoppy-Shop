@@ -262,7 +262,9 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ dish: isSpecificSearch ? dish : '', products: productNames })
             });
-            const result = await response.json();
+            const raw = await response.text();
+            let result;
+            try { result = JSON.parse(raw); } catch (e) { throw new Error('Server: ' + raw.slice(0, 150)); }
             if (!response.ok) throw new Error(result.error || 'Eroare server');
 
             recipeText.textContent = result.recipe;
