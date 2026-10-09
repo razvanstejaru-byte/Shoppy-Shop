@@ -41,7 +41,7 @@ Folosește cu precădere ingredientele din coș. Pune în "missing" DOAR ingredi
 Propune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOAR ce este strict necesar ca rețeta să poată fi gătită.`;
 
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent',
       {
         method: 'POST',
         headers: {
@@ -49,17 +49,9 @@ Propune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOA
           'x-goog-api-key': apiKey,
         },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt + '\nRăspunde în limba română.' }] }],
+          contents: [{ parts: [{ text: prompt + '\nRăspunde strict în format JSON având cheile "recipe" (string) și "missing" (array de stringuri).' }] }],
           generationConfig: {
             responseMimeType: 'application/json',
-            responseSchema: {
-              type: 'OBJECT',
-              properties: {
-                recipe: { type: 'STRING' },
-                missing: { type: 'ARRAY', items: { type: 'STRING' } },
-              },
-              required: ['recipe', 'missing'],
-            },
           },
         }),
       }
