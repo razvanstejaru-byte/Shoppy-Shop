@@ -1,0 +1,504 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cumpărături</title>
+    <style>
+        :root {
+            --bg-color: #0b0b0b;
+            --card-bg: #161616;
+            --card-border: #222222;
+            --accent-color: #f3b24e;
+            --accent-hover: #e09d3b;
+            --text-main: #ffffff;
+            --text-muted: #999999;
+            --input-bg: #1e1e1e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 16px;
+        }
+
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Top Header */
+        .header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .title-box {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .app-icon {
+            background: linear-gradient(135deg, #f3b24e, #e67e22);
+            padding: 8px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .btn-istoric {
+            background-color: var(--card-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--card-border);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Nav Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .tab-btn.inactive {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+        }
+
+        /* Family Bar */
+        .family-bar {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .family-bar span {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+
+        /* Input Section */
+        .input-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .main-input {
+            flex: 1;
+            background-color: var(--input-bg);
+            border: 1px solid var(--card-border);
+            padding: 12px 14px;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+        }
+
+        .qty-input {
+            width: 80px;
+            background-color: var(--input-bg);
+            border: 1px solid var(--card-border);
+            padding: 12px 10px;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            text-align: center;
+        }
+
+        .main-input::placeholder, .qty-input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .btn-add {
+            background-color: var(--accent-color);
+            color: #000;
+            border: none;
+            width: 48px;
+            border-radius: 12px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Search Section for Specific Dish */
+        .search-dish-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 14px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .search-dish-box h3 {
+            font-size: 0.95rem;
+            margin: 0 0 8px 0;
+            color: var(--accent-color);
+        }
+
+        /* Product List */
+        .items-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+
+        .item-row {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .item-info input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .item-text span.completed {
+            text-decoration: line-through;
+            color: var(--text-muted);
+        }
+
+        .item-qty {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            margin-left: 6px;
+        }
+
+        .item-row button {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            margin-top: 20px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        /* AI Recipe Section Styling */
+        .recipe-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            padding: 16px;
+            border-radius: 12px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .recipe-box h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+            font-size: 1rem;
+        }
+
+        .recipe-box p, .recipe-box li {
+            font-size: 0.85rem;
+            color: #ddd;
+            line-height: 1.4;
+        }
+
+        .btn-recipe {
+            background-color: #27ae60;
+            color: white;
+            width: 100%;
+            border: none;
+            padding: 12px;
+            border-radius: 12px;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        .btn-add-missing {
+            background-color: var(--accent-color);
+            color: #000;
+            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Header -->
+    <div class="header-row">
+        <div class="title-box">
+            <div class="app-icon">🛍️</div>
+            <h1>Cumpărături</h1>
+        </div>
+        <button class="btn-istoric">📜 Istoric</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="nav-tabs">
+        <button class="tab-btn">🛒 Listă</button>
+        <button class="tab-btn inactive">💳 Carduri fidelitate</button>
+    </div>
+
+    <!-- Family Bar -->
+    <div class="family-bar">
+        <div>Salut, Razvan!</div>
+        <div>Familie: <span>AGDH</span></div>
+    </div>
+
+    <!-- Input Form with Quantity -->
+    <div class="input-row">
+        <input type="text" id="productInput" class="main-input" placeholder="Ce mai trebuie cumpărat?">
+        <input type="text" id="quantityInput" class="qty-input" placeholder="Cant.">
+        <button class="btn-add" onclick="addProduct()">+</button>
+    </div>
+
+    <!-- List -->
+    <ul id="productList" class="items-list">
+        <div id="emptyMessage" class="empty-state">Lista e goală.</div>
+    </ul>
+
+    <!-- Search Dish Box -->
+    <div class="search-dish-box">
+        <h3>Ce mâncare vrei să faci?</h3>
+        <div class="input-row" style="margin-bottom: 0;">
+            <input type="text" id="desiredDishInput" class="main-input" placeholder="ex: Supă de pui, Omletă...">
+            <button class="btn-add" onclick="askGeminiForRecipe(true)" style="background-color: var(--accent-color);">🔍</button>
+        </div>
+    </div>
+
+    <!-- AI Assistant Feature Button -->
+    <button class="btn-recipe" onclick="askGeminiForRecipe(false)">🤖 Sugerează rețetă din ce am în coș</button>
+
+    <!-- Recipe Result Box -->
+    <div id="recipeBox" class="recipe-box">
+        <h3>Asistent Culinar AI</h3>
+        <p id="recipeText">Se generează rețeta...</p>
+        <h4 style="font-size:0.9rem; color:var(--accent-color); margin: 10px 0 6px 0;">Ingrediente lipsă (strict necesare):</h4>
+        <ul id="missingList" style="list-style:none; padding:0; margin:0 0 10px 0;"></ul>
+        <button class="btn-add-missing" onclick="addMissingToCart()">Pune produsele lipsă în coș</button>
+    </div>
+</div>
+
+<script>
+    let products = [];
+    let currentMissing = [];
+    const GEMINI_API_KEY = "AIzaSyC-Ymr2n8tiUTgipE170xWEHwn3j8UWtLI"; // Înlocuiește cu cheia ta API Gemini
+
+    function addProduct() {
+        const input = document.getElementById('productInput');
+        const qtyInput = document.getElementById('quantityInput');
+        const val = input.value.trim();
+        const qty = qtyInput.value.trim();
+
+        if (val) {
+            products.push({
+                name: val,
+                quantity: qty || '1 buc',
+                completed: false
+            });
+            renderList();
+            input.value = '';
+            qtyInput.value = '';
+        }
+    }
+
+    function toggleComplete(index) {
+        products[index].completed = !products[index].completed;
+        renderList();
+    }
+
+    function renderList() {
+        const list = document.getElementById('productList');
+        list.innerHTML = '';
+        if (products.length === 0) {
+            list.innerHTML = '<div id="emptyMessage" class="empty-state">Lista e goală.</div>';
+            return;
+        }
+
+        products.forEach((prod, index) => {
+            const li = document.createElement('li');
+            li.className = 'item-row';
+            li.innerHTML = `
+                <div class="item-info" onclick="toggleComplete(${index})">
+                    <input type="checkbox" ${prod.completed ? 'checked' : ''} onclick="event.stopPropagation(); toggleComplete(${index})">
+                    <span class="item-text">
+                        <span class="${prod.completed ? 'completed' : ''}">${prod.name}</span>
+                        <span class="item-qty">(${prod.quantity})</span>
+                    </span>
+                </div>
+                <button onclick="removeProduct(${index})">Șterge</button>
+            `;
+            list.appendChild(li);
+        });
+    }
+
+    function removeProduct(index) {
+        products.splice(index, 1);
+        renderList();
+    }
+
+    async function askGeminiForRecipe(isSpecificSearch) {
+        const desiredDish = document.getElementById('desiredDishInput').value.trim();
+
+        if (isSpecificSearch && !desiredDish) {
+            alert("Te rugăm să scrii ce mâncare vrei să faci în bara de căutare!");
+            return;
+        }
+
+        const box = document.getElementById('recipeBox');
+        box.style.display = 'block';
+        document.getElementById('recipeText').innerText = "Se procesează solicitarea cu AI...";
+        document.getElementById('missingList').innerHTML = '';
+
+        // Extragem doar numele produselor pentru AI
+        const productNames = products.map(p => p.name);
+
+        let prompt = "";
+        if (isSpecificSearch) {
+            prompt = `Utilizatorul vrea să gătească exact acest preparat: "${desiredDish}". 
+            Ingredientele pe care le are deja în coș sunt: ${productNames.length > 0 ? productNames.join(', ') : 'niciunul'}. 
+            Regulă strictă: Folosește cu precădere ingredientele din coș. Adaugă alte ingrediente în lista de "missing" DOAR DACĂ ESTE STRICT NECESAR pentru realizarea rețetei, fără elemente opționale sau excese. 
+            Răspunde obligatoriu în limba română în format JSON strict:
+            {
+              "recipe": "Modul de preparare...",
+              "missing": ["ingredient1", "ingredient2"]
+            }`;
+        } else {
+            if (productNames.length === 0) {
+                alert("Te rugăm să adaugi ingrediente în coș sau să folosești bara de căutare a preparatului dorit!");
+                box.style.display = 'none';
+                return;
+            }
+            prompt = `Am următoarele ingrediente în coș: ${productNames.join(', ')}. 
+            Propune o rețetă simplă bazată EXCLUSIV pe aceste ingrediente. Adaugă alte produse în lista "missing" DOAR DACĂ ESTE STRICT NECESAR pentru ca rețeta să poată fi gătită. 
+            Răspunde obligatoriu în limba română în format JSON strict:
+            {
+              "recipe": "Modul de preparare...",
+              "missing": ["ingredient1", "ingredient2"]
+            }`;
+        }
+
+        try {
+            const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }]
+                })
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                throw new Error(data.error.message);
+            }
+
+            const textResponse = data.candidates[0].content.parts[0].text;
+            const cleanJson = textResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+            const result = JSON.parse(cleanJson);
+
+            document.getElementById('recipeText').innerText = result.recipe;
+            
+            currentMissing = result.missing || [];
+            const mList = document.getElementById('missingList');
+            if (currentMissing.length === 0) {
+                const li = document.createElement('li');
+                li.innerText = "Ai tot ce îți trebuie în coș! Nu lipsește nimic.";
+                mList.appendChild(li);
+            } else {
+                currentMissing.forEach(ing => {
+                    const li = document.createElement('li');
+                    li.style.background = '#1e1e1e';
+                    li.style.padding = '6px 10px';
+                    li.style.borderRadius = '6px';
+                    li.style.marginBottom = '4px';
+                    li.innerText = `• ${ing}`;
+                    mList.appendChild(li);
+                });
+            }
+
+        } catch (error) {
+            console.error(error);
+            document.getElementById('recipeText').innerText = "Eroare la comunicarea cu Gemini: " + error.message;
+        }
+    }
+
+    function addMissingToCart() {
+        if (currentMissing.length === 0) return;
+        currentMissing.forEach(ing => {
+            if (!products.some(p => p.name.toLowerCase() === ing.toLowerCase())) {
+                products.push({ name: ing, quantity: '1 buc', completed: false });
+            }
+        });
+        renderList();
+        document.getElementById('recipeBox').style.display = 'none';
+        alert("Ingredientele lipsă au fost adăugate în lista de cumpărături!");
+    }
+</script>
+
+</body>
+</html>
