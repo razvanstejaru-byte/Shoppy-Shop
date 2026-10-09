@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
       : `Ingrediente în coș: ${have}. Propune o rețetă simplă în limba română bazată pe ele și identifică ce mai lipsește. Răspunde strict în format JSON valid, având structura: {"recipe": "textul rețetei", "missing": ["ingredient1", "ingredient2"]}.`;
 
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent',
       {
         method: 'POST',
         headers: {
@@ -46,9 +46,6 @@ module.exports = async function handler(req, res) {
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
             temperature: 0.3,
-            thinkingConfig: {
-              thinkingBudget: 0
-            },
             responseMimeType: 'application/json',
           },
         }),
@@ -57,7 +54,7 @@ module.exports = async function handler(req, res) {
 
     const data = await r.json();
     if (!r.ok || data.error) {
-      return res.status(502).json({ error: (data.error && data.error.message) || 'Eroare de la serverul Gemini' });
+      return res.status(502).json({ error: (data.error && data.error.message) => 'Eroare de la serverul Gemini' });
     }
 
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
