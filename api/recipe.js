@@ -11,10 +11,7 @@ module.exports = async function handler(req, res) {
       process.env.GEMINI_KEY;
 
     if (!apiKey) {
-      const nume = Object.keys(process.env).filter(k => /GEM|API|KEY/i.test(k));
-      return res.status(500).json({
-        error: 'Lipsește GEMINI_API_KEY. Variabile găsite: ' + (nume.join(', ') || 'niciuna'),
-      });
+      return res.status(500).json({ error: 'Lipsește GEMINI_API_KEY în setările Vercel.' });
     }
 
     let body = req.body || {};
@@ -34,14 +31,15 @@ module.exports = async function handler(req, res) {
 
     const have = products.length ? products.join(', ') : 'niciunul';
     const prompt = dish
-      ? `Utilizatorul vrea să gătească: "${dish}".
-Ingredientele din coș: ${have}.
-Folosește cu precădere ingredientele din coș. Pune în "missing" DOAR ingredientele strict necesare care nu sunt în coș, fără opționale.`
-      : `Ingredientele din coș: ${have}.
-Propune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOAR ce este strict necesar ca rețeta să poată fi gătită.`;
+      ? `Utilizatorul vrea să gătească: "${dish}". Ingrediente în coș: ${have}. 
+Generează o rețetă în limba română și identifică ingredientele lipsă strict necesare care nu sunt în coș. 
+Răspunde DOAR în format JSON valid, având exact structura: {"recipe": "textul rețetei", "missing": ["ingredient1", "ingredient2"]}. Fără alte comentarii sau markdown suplimentar în afara JSON-ului.`
+      : `Ingrediente în coș: ${have}. 
+Propune o rețetă simplă în limba română bazată pe ele și identifică ce mai lipsește strict. 
+Răspunde DOAR în format JSON valid, având exact structura: {"recipe": "textul rețetei", "missing": ["ingredient1", "ingredient2"]}.`;
 
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent',
       {
         method: 'POST',
         headers: {
@@ -49,27 +47,29 @@ Propune o rețetă simplă bazată pe aceste ingrediente. Pune în "missing" DOA
           'x-goog-api-key': apiKey,
         },
         body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt + '\nRăspunde strict în format JSON având cheile "recipe" (string) și "missing" (array de stringuri).' }] }],
+          contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            responseMimeType: 'application/json',
-          },
+            temperature: 0.4,
+            responseMimeType: 'application/json'
+          }
         }),
       }
     );
 
     const data = await r.json();
     if (!r.ok || data.error) {
-      return res.status(502).json({ error: (data.error && data.error.message) || 'Eroare Gemini' });
+      return res.status(502).json({ error: (data.error && data.error.message) || 'Eroare de la serverul Gemini' });
     }
 
-    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
-    const parsed = JSON.parse(text.replace(/```json|```/g, '').trim());
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
+    const cleanText = text.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleanText);
 
     return res.status(200).json({
-      recipe: String(parsed.recipe || ''),
+      recipe: String(parsed.recipe || 'Nu s-a putut genera rețeta.'),
       missing: Array.isArray(parsed.missing) ? parsed.missing.map(String) : [],
     });
   } catch (e) {
-    return res.status(500).json({ error: 'Eroare internă: ' + (e && e.message ? e.message : e) });
+    return res.status(500).json({ error: 'Eroare internă server: ' + (e && e.message ? e.message : e) });
   }
 };
