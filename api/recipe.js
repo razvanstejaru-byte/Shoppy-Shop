@@ -35,7 +35,7 @@ module.exports = async function handler(req, res) {
       : `Ingrediente în coș: ${have}. Propune o rețetă simplă în limba română bazată pe ele și identifică ce mai lipsește. Răspunde strict în format JSON valid, având structura: {"recipe": "textul rețetei", "missing": ["ingredient1", "ingredient2"]}.`;
 
     const r = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent',
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent',
       {
         method: 'POST',
         headers: {
@@ -45,7 +45,10 @@ module.exports = async function handler(req, res) {
         body: JSON.stringify({
           contents: [{ parts: [{ text: prompt }] }],
           generationConfig: {
-            temperature: 0.4,
+            temperature: 0.3,
+            thinkingConfig: {
+              thinkingBudget: 0
+            },
             responseMimeType: 'application/json',
           },
         }),
