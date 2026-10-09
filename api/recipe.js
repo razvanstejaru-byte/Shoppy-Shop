@@ -54,7 +54,7 @@ module.exports = async function handler(req, res) {
 
     const data = await r.json();
     if (!r.ok || data.error) {
-      return res.status(502).json({ error: (data.error && data.error.message) => 'Eroare de la serverul Gemini' });
+      return res.status(502).json({ error: (data.error && data.error.message) || 'Eroare de la serverul Gemini' });
     }
 
     const text = data.candidates?.[0]?.content?.parts?.[0]?.text || '{}';
